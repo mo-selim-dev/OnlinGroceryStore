@@ -6,17 +6,37 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		0ABB5AB32D353C3900FB50A3 /* OnlinGroceryStoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB5AB02D353C3900FB50A3 /* OnlinGroceryStoreApp.swift */; };
+		0ABB5AB42D353C3900FB50A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AAC2D353C3900FB50A3 /* Preview Assets.xcassets */; };
+		0ABB5AB52D353C3900FB50A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AAE2D353C3900FB50A3 /* Assets.xcassets */; };
+		0ABB5ACA2D353C4100FB50A3 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AC92D353C4100FB50A3 /* Launch Screen.storyboard */; };
+		0ABB5ACB2D353C4100FB50A3 /* Gilroy-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AC72D353C4100FB50A3 /* Gilroy-Semibold.ttf */; };
+		0ABB5ACC2D353C4100FB50A3 /* Gilroy-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AC62D353C4100FB50A3 /* Gilroy-Regular.ttf */; };
+		0ABB5ACD2D353C4100FB50A3 /* Gilroy-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AC52D353C4100FB50A3 /* Gilroy-Medium.ttf */; };
+		0ABB5ACE2D353C4100FB50A3 /* Gilroy-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0ABB5AC42D353C4100FB50A3 /* Gilroy-Bold.ttf */; };
+		0ABB5AD12D353C4100FB50A3 /* UIKitExtention.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB5AB62D353C4100FB50A3 /* UIKitExtention.swift */; };
+		0ABB5AD22D353C4100FB50A3 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB5AB92D353C4100FB50A3 /* RoundButton.swift */; };
+		0ABB5AD32D353C4100FB50A3 /* UIExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB5AB82D353C4100FB50A3 /* UIExtension.swift */; };
+		0ABB5AD42D353C4100FB50A3 /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABB5AC12D353C4100FB50A3 /* WelcomeView.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		0ABB5A9B2D353BFD00FB50A3 /* OnlinGroceryStore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnlinGroceryStore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0ABB5AAC2D353C3900FB50A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		0ABB5AAE2D353C3900FB50A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0ABB5AB02D353C3900FB50A3 /* OnlinGroceryStoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnlinGroceryStoreApp.swift; sourceTree = "<group>"; };
+		0ABB5AB62D353C4100FB50A3 /* UIKitExtention.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitExtention.swift; sourceTree = "<group>"; };
+		0ABB5AB82D353C4100FB50A3 /* UIExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIExtension.swift; sourceTree = "<group>"; };
+		0ABB5AB92D353C4100FB50A3 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		0ABB5AC12D353C4100FB50A3 /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
+		0ABB5AC42D353C4100FB50A3 /* Gilroy-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Bold.ttf"; sourceTree = "<group>"; };
+		0ABB5AC52D353C4100FB50A3 /* Gilroy-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Medium.ttf"; sourceTree = "<group>"; };
+		0ABB5AC62D353C4100FB50A3 /* Gilroy-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Regular.ttf"; sourceTree = "<group>"; };
+		0ABB5AC72D353C4100FB50A3 /* Gilroy-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Gilroy-Semibold.ttf"; sourceTree = "<group>"; };
+		0ABB5AC92D353C4100FB50A3 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		0ABB5AD72D353C7C00FB50A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		0ABB5A9D2D353BFD00FB50A3 /* OnlinGroceryStore */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = OnlinGroceryStore;
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		0ABB5A982D353BFD00FB50A3 /* Frameworks */ = {
@@ -32,7 +52,7 @@
 		0ABB5A922D353BFD00FB50A3 = {
 			isa = PBXGroup;
 			children = (
-				0ABB5A9D2D353BFD00FB50A3 /* OnlinGroceryStore */,
+				0ABB5AB12D353C3900FB50A3 /* OnlinGroceryStore */,
 				0ABB5A9C2D353BFD00FB50A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +63,90 @@
 				0ABB5A9B2D353BFD00FB50A3 /* OnlinGroceryStore.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		0ABB5AAD2D353C3900FB50A3 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AAC2D353C3900FB50A3 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		0ABB5AB12D353C3900FB50A3 /* OnlinGroceryStore */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AB72D353C4100FB50A3 /* Common */,
+				0ABB5ABE2D353C4100FB50A3 /* UICommon */,
+				0ABB5ABF2D353C4100FB50A3 /* Model */,
+				0ABB5AC02D353C4100FB50A3 /* VeiwModel */,
+				0ABB5AC32D353C4100FB50A3 /* View */,
+				0ABB5AD72D353C7C00FB50A3 /* Info.plist */,
+				0ABB5AC82D353C4100FB50A3 /* Fonts */,
+				0ABB5AB02D353C3900FB50A3 /* OnlinGroceryStoreApp.swift */,
+				0ABB5AC92D353C4100FB50A3 /* Launch Screen.storyboard */,
+				0ABB5AAD2D353C3900FB50A3 /* Preview Content */,
+				0ABB5AAE2D353C3900FB50A3 /* Assets.xcassets */,
+			);
+			path = OnlinGroceryStore;
+			sourceTree = "<group>";
+		};
+		0ABB5AB72D353C4100FB50A3 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AB62D353C4100FB50A3 /* UIKitExtention.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		0ABB5ABE2D353C4100FB50A3 /* UICommon */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AB82D353C4100FB50A3 /* UIExtension.swift */,
+				0ABB5AB92D353C4100FB50A3 /* RoundButton.swift */,
+			);
+			path = UICommon;
+			sourceTree = "<group>";
+		};
+		0ABB5ABF2D353C4100FB50A3 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		0ABB5AC02D353C4100FB50A3 /* VeiwModel */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = VeiwModel;
+			sourceTree = "<group>";
+		};
+		0ABB5AC22D353C4100FB50A3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AC12D353C4100FB50A3 /* WelcomeView.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		0ABB5AC32D353C4100FB50A3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AC22D353C4100FB50A3 /* Login */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		0ABB5AC82D353C4100FB50A3 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0ABB5AC42D353C4100FB50A3 /* Gilroy-Bold.ttf */,
+				0ABB5AC52D353C4100FB50A3 /* Gilroy-Medium.ttf */,
+				0ABB5AC62D353C4100FB50A3 /* Gilroy-Regular.ttf */,
+				0ABB5AC72D353C4100FB50A3 /* Gilroy-Semibold.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +163,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				0ABB5A9D2D353BFD00FB50A3 /* OnlinGroceryStore */,
 			);
 			name = OnlinGroceryStore;
 			packageProductDependencies = (
@@ -109,6 +210,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABB5AB42D353C3900FB50A3 /* Preview Assets.xcassets in Resources */,
+				0ABB5AB52D353C3900FB50A3 /* Assets.xcassets in Resources */,
+				0ABB5ACA2D353C4100FB50A3 /* Launch Screen.storyboard in Resources */,
+				0ABB5ACB2D353C4100FB50A3 /* Gilroy-Semibold.ttf in Resources */,
+				0ABB5ACC2D353C4100FB50A3 /* Gilroy-Regular.ttf in Resources */,
+				0ABB5ACD2D353C4100FB50A3 /* Gilroy-Medium.ttf in Resources */,
+				0ABB5ACE2D353C4100FB50A3 /* Gilroy-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +227,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0ABB5AD12D353C4100FB50A3 /* UIKitExtention.swift in Sources */,
+				0ABB5AD22D353C4100FB50A3 /* RoundButton.swift in Sources */,
+				0ABB5AD32D353C4100FB50A3 /* UIExtension.swift in Sources */,
+				0ABB5AD42D353C4100FB50A3 /* WelcomeView.swift in Sources */,
+				0ABB5AB32D353C3900FB50A3 /* OnlinGroceryStoreApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +368,7 @@
 				DEVELOPMENT_TEAM = 85H8A8SH2D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnlinGroceryStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -284,6 +398,7 @@
 				DEVELOPMENT_TEAM = 85H8A8SH2D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnlinGroceryStore/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
