@@ -1,14 +1,15 @@
 //
 //  RoundButton.swift
-//  App1
+//  OnlinGroceryStore
 //
-//  Created by Mohamed Selim on 10/31/24.
+//  Created by Mohamed Selim on 12/01/2025.
 //
 
 import SwiftUI
 
 struct RoundButton: View {
     @State var title: String = "Tittle"
+    @State var color: Color = Color.primaryApp
     var didTap: (()->())?
     var body: some View {
         Button {
@@ -20,8 +21,7 @@ struct RoundButton: View {
                 .multilineTextAlignment(.center)
         }
         .frame( minWidth: 0, maxWidth: .infinity, minHeight: 60, maxHeight: 60 )
-        //                .background( Color.primaryApp)
-        .background( Color(hex: "31511E").opacity(0.9))
+        .background(color)
         .cornerRadius(20)
     }
 }

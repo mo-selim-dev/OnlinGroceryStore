@@ -5,7 +5,6 @@
 //  Created by Mohamed Selim on 12/01/2025.
 //
 
-
 import SwiftUI
 
 struct WelcomeView: View {
@@ -16,18 +15,15 @@ struct WelcomeView: View {
                 .resizable()
                 .scaledToFill()
                 .frame(width: .screenWidth, height: .screenHeight)
-
-
+            
+            
             VStack{
-
                 Spacer()
                     .overlay(alignment: .bottom) {
                         Circle()
-//                          .stroke(Color(hex: "53B175"), lineWidth: 5) //  stroke & frame  do not meet
                             .frame(width: 85, height: 85)
-//                            .foregroundColor(Color(hex: "53B175"))
                             .foregroundColor(Color(hex: "31511E"))
-                            .opacity(0.8)
+                            .opacity(0.9)
                             .shadow(color: Color(hex: "31511E"), radius: 35, x: -20, y: 20)
                         
                         Image("app_logo")
@@ -43,34 +39,41 @@ struct WelcomeView: View {
                     .foregroundColor(Color(hex: "31511E"))
                     .opacity(0.9)
                     .multilineTextAlignment(.center)
-                        
+                
                 Text("This is a simple application tested by me")
-                  // .font(.subheadline)
                     .font(.customfont(.medium, fontSize: 16))
                     .foregroundStyle(Color(hex: "31511E").opacity(0.8))
                     .multilineTextAlignment(.center)
                     .padding(.bottom, 30)
+                
+                NavigationLink {
+                    SignInView()
+                } label: {
+                    RoundButton(title: "Get Started", color: Color(hex: "31511E").opacity(0.9)) {
+                        
+                    }
 
-                RoundButton(title: "Get Started" )
+                }
+
                 
                 Spacer()
                     .frame(height: 60)
-
-                    }
-                    .padding(.horizontal, 20)
-                    .navigationTitle("")
-                    .navigationBarBackButtonHidden(true)
-                    .navigationBarHidden(true)
                 
             }
-        .ignoresSafeArea()
+            .padding(.horizontal, 20)
+            .navigationTitle("")
+            .navigationBarBackButtonHidden(true)
+            .navigationBarHidden(true)
+            
         }
-        
+        .ignoresSafeArea()
     }
+    
+}
 
 
 #Preview {
-        NavigationView {
-            WelcomeView()
-        }
+    NavigationView {
+        WelcomeView()
+    }
 }

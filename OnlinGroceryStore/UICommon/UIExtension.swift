@@ -83,34 +83,32 @@ extension CGFloat {
     
 }
 
-// امتداد Color لتوفير الألوان المخصصة باستخدام Hex
 extension Color {
     
     static var primaryApp: Color {
-        return Color(hex: "53B175") // اللون الرئيسي
+        return Color(hex: "53B175")
     }
     
     static var primaryText: Color {
-        return Color(hex: "030303") // لون النص الرئيسي
+        return Color(hex: "030303")
     }
     
     static var secondaryText: Color {
-        return Color(hex: "828282") // لون النص الثانوي
+        return Color(hex: "828282")
     }
     
     static var textTitle: Color {
-        return Color(hex: "C7C7C7") // لون عنوان النص
+        return Color(hex: "C7C7C7")
     }
 
     static var placeholder: Color {
-        return Color(hex: "B1B1B1") // لون العنصر المعطى كـ placeholder
+        return Color(hex: "B1B1B1")
     }
     
     static var darkGray: Color {
-        return Color(hex: "4C4F4D") // اللون الرمادي الداكن
+        return Color(hex: "4C4F4D")
     }
     
-    // دالة init لتحويل قيم Hex إلى UIColor
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: .alphanumerics.inverted)
         var int: UInt64 = 0
@@ -137,50 +135,21 @@ extension Color {
     }
 }
 
-//// امتداد View لاستخدام الألوان المخصصة في `foregroundStyle`
-//extension View {
-//    func customForegroundColor() -> some View {
-//        self.foregroundStyle(Color.primary)  // استخدام اللون الرئيسي
-//    }
-//    
-//    func customSecondaryTextColor() -> some View {
-//        self.foregroundStyle(Color.secondaryText)  // استخدام اللون النصي الثانوي
-//    }
-//    
-//    func customTextTitleColor() -> some View {
-//        self.foregroundStyle(Color.textTitle)  // استخدام لون عنوان النص
-//    }
-//    
-//    func customPlaceholderColor() -> some View {
-//        self.foregroundStyle(Color.placeholder)  // استخدام لون الـ placeholder
-//    }
-//    
-//    func customDarkGrayColor() -> some View {
-//        self.foregroundStyle(Color.darkGray)  // استخدام اللون الرمادي الداكن
-//    }
-//}
-
-
-struct ShowButton: ViewModifier {
+struct ShowEyeButton: ViewModifier {
 @Binding var isShow: Bool
     public func body(content: Content) -> some View {
         HStack {
             content
-//                .autocorrectionDisabled()
             Button{
-//                isShow = !isShow
                 isShow.toggle()
             }label: {
                 Image(systemName: !isShow ? "eye.fill" : "eye.slash.fill")
                     .foregroundStyle(Color.textTitle )
-                //OR
-//                    .foregroundColor(.textTitle)
-                // OR
-//                    .customTextTitleColor()  // تطبيق لون عنوان النص
-
 
             }
         }
     }
     
 }
+
+
