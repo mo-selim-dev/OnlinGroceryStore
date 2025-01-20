@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A480D7A2D3CA90A008032D3 /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A480D792D3CA90A008032D3 /* UserModel.swift */; };
 		0A7EBB122D36F8290070CCED /* SignInView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EBB112D36F81A0070CCED /* SignInView.swift */; };
 		0A7EBB162D370E4B0070CCED /* CountryPickerUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7EBB152D370E4B0070CCED /* CountryPickerUI.swift */; };
 		0A7EBB192D370E730070CCED /* CountryPicker in Frameworks */ = {isa = PBXBuildFile; productRef = 0A7EBB182D370E730070CCED /* CountryPicker */; };
@@ -31,6 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0A480D792D3CA90A008032D3 /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		0A7EBB112D36F81A0070CCED /* SignInView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInView.swift; sourceTree = "<group>"; };
 		0A7EBB152D370E4B0070CCED /* CountryPickerUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryPickerUI.swift; sourceTree = "<group>"; };
 		0A7EBB1A2D3713FD0070CCED /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 		0ABB5ABF2D353C4100FB50A3 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				0A480D792D3CA90A008032D3 /* UserModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -265,6 +268,7 @@
 				0ABB5AD32D353C4100FB50A3 /* UIExtension.swift in Sources */,
 				0A7EBB212D37E1880070CCED /* MainViewModel.swift in Sources */,
 				0ABB5AD42D353C4100FB50A3 /* WelcomeView.swift in Sources */,
+				0A480D7A2D3CA90A008032D3 /* UserModel.swift in Sources */,
 				0A7EBB1B2D3713FD0070CCED /* LoginView.swift in Sources */,
 				0A7EBB1D2D37141A0070CCED /* SignUpView.swift in Sources */,
 				0A7EBB272D3898380070CCED /* ServiceCall.swift in Sources */,

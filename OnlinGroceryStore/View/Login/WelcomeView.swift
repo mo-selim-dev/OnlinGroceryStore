@@ -16,7 +16,6 @@ struct WelcomeView: View {
                 .scaledToFill()
                 .frame(width: .screenWidth, height: .screenHeight)
             
-            
             VStack{
                 Spacer()
                     .overlay(alignment: .bottom) {
@@ -70,7 +69,6 @@ struct WelcomeView: View {
     }
     
 }
-
 
 #Preview {
     NavigationView {

@@ -47,7 +47,7 @@ struct LoginView: View {
  
                 
                 RoundButton(title: "Log In") {
-                    //erviceCallLogin()
+                    loginVM.serviceCallLogin()
                 }
                 .padding(.bottom, .screenWidth * 0.05)
                 
