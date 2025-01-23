@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct Globs {
+struct AppConstants {
     static let AppName = "Online Groceries"
     
     static let BASE_URL = "http://localhost:3001/api/app/"
