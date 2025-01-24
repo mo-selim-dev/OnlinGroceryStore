@@ -5,7 +5,6 @@
 //  Created by Mohamed Selim on 23/01/2025.
 //
 
-
 import SwiftUI
 
 struct SearchTextField: View {

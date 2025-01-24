@@ -1,3 +1,11 @@
+//
+//  SectionTitleAll.swift
+//  OnlinGroceryStore
+//
+//  Created by Mohamed Selim on 23/01/2025.
+//
+
+
 import SwiftUI
 
 struct SectionTitleAll: View {
@@ -23,9 +31,7 @@ struct SectionTitleAll: View {
     }
 }
 
-struct SectionTitleAll_Previews: PreviewProvider {
-    static var previews: some View {
-        SectionTitleAll()
-            .padding(20)
-    }
+#Preview {
+    SectionTitleAll()
+        .padding(20)
 }

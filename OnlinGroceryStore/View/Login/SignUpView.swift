@@ -13,129 +13,73 @@ struct SignUpView: View {
     @StateObject var signUpVM = MainViewModel.shared
     
     var body: some View {
-        
-        ZStack{
-            Image("botton_bg")
-                .resizable()
-                .scaledToFill()
-                .frame(width: .screenWidth, height: .screenHeight)
+        ZStack {
+            authBackgroundImage()
+            authBackButton(dismiss: dismiss)
             
-            
-            VStack {
-                
-                HStack {
-                    Button {
-                        dismiss()
-                    } label: {
-                        Image("back")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
-                    }
+            ScrollView {
+                VStack {
+                    authLogoImage()
+                    authTitleSection(title: "Sign Up", subtitle: "Enter your credentials to continue")
                     
-                    Spacer()
+                    FormTextfield(
+                        title: "Username",
+                        placholder: "Enter your Username",
+                        txt: $signUpVM.txtUsername
+                    )
+                    .padding(.bottom, .screenWidth * 0.07)
                     
-                }
-                
-                Spacer()
-                
-            }
-            .padding(.top, .topInsets)
-            .padding(.horizontal, 20)
-            
-            ScrollView{
-                
-                VStack{
+                    FormTextfield(
+                        title: "Email",
+                        placholder: "Enter your email address",
+                        txt: $signUpVM.txtEmail,
+                        keyboardType: .emailAddress
+                    )
+                    .padding(.bottom, .screenWidth * 0.07)
                     
-                    Image("color_logo")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 40)
-                        .padding(.bottom, .screenWidth * 0.1)
+                    FormSecureField(
+                        title: "Password",
+                        placholder: "Enter your password",
+                        txt: $signUpVM.txtPassword,
+                        isShowPassword: $signUpVM.isShowPassword
+                    )
+                    .padding(.bottom, .screenWidth * 0.02)
                     
-                    Text("Sign Up")
-                        .font(.customfont(.semibold, fontSize: 26))
-                        .foregroundStyle(Color.primaryText)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, 4)
-                    
-                    Text("Enter your credentials to continue")
-                        .font(.customfont(.semibold, fontSize: 16))
-                        .foregroundStyle(Color.secondaryText)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        .padding(.bottom, .screenWidth * 0.1)
-                    
-                    FormTextfield( title: "Username", placholder: "Enter your Username", txt: $signUpVM.txtUsername)
-                        .padding(.bottom, .screenWidth * 0.07)
-                    
-                    FormTextfield( title: "Email", placholder: "Enter your email address", txt: $signUpVM.txtEmail, keyboardType: .emailAddress)
-                        .padding(.bottom, .screenWidth * 0.07)
-                    
-                    FormSecureField( title: "Password", placholder: "Enter your password", txt: $signUpVM.txtPassword, isShowPassword: $signUpVM.isShowPassword)
-                        .padding(.bottom, .screenWidth * 0.02)
-                    
-                    VStack {
-                        Text("By continuing you agree to our")
-                            .font(.customfont(.medium, fontSize: 14))
-                            .foregroundColor(.secondaryText)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        
-                        HStack{
-                            
-                            Text("Terms of Service")
-                                .font(.customfont(.medium, fontSize: 14))
-                                .foregroundColor(.primaryApp)
-                                
-                            
-                            Text(" and ")
-                                .font(.customfont(.medium, fontSize: 14))
-                                .foregroundColor(.secondaryText)
-                                
-                            
-                            Text("Privacy Policy.")
-                                .font(.customfont(.medium, fontSize: 14))
-                                .foregroundColor(.primaryApp)
-                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                                
-                        }
-                        .padding(.bottom, .screenWidth * 0.02)
-                    }
+                    termsAndConditionsSection()
                     
                     RoundButton(title: "Sign Up") {
                         signUpVM.serviceCallSignUp()
                     }
                     .padding(.bottom, .screenWidth * 0.05)
                     
-                    
+                    // Signup Navigation
                     NavigationLink {
-                        SignUpView()
+                        SignInView()
                     } label: {
-                        HStack{
+                        HStack {
                             Text("Alredy have an account?")
                                 .font(.customfont(.semibold, fontSize: 14))
                                 .foregroundColor(.primaryText)
                             
-                            Text("Signup")
+                            Text("Sign In")
                                 .font(.customfont(.semibold, fontSize: 14))
                                 .foregroundColor(.primaryApp)
                         }
                     }
-                    
-                    
                     
                     Spacer()
                 }
                 .padding(.top, .topInsets + 64)
                 .padding(.horizontal, 20)
                 .padding(.bottom, .bottomInsets)
-                
             }
-            
-            
         }
         .alert(isPresented: $signUpVM.showError) {
-            
-            Alert(title: Text(Globs.AppName), message: Text( signUpVM.errorMessage ), dismissButton: .default(Text("Ok")))
+            Alert(
+                title: Text(AppConstants.appName),
+                message: Text(signUpVM.errorMessage),
+                dismissButton: .default(Text("Ok"))
+            )
         }
         .background(Color.white)
         .navigationTitle("")
@@ -143,10 +87,10 @@ struct SignUpView: View {
         .navigationBarHidden(true)
         .ignoresSafeArea()
     }
+    
 }
 
-
-
+// MARK: - Preview
 #Preview {
     SignUpView()
 }

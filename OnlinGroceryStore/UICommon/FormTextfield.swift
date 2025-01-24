@@ -63,17 +63,10 @@ struct FormSecureField: View {
     }
 }
 
-
-// error: 'Previewable()' is only available in iOS 17.0 or newer
-//#Preview {
-//    @State static var text = "text"
-//    FormTextfield(txt: $text) // فقط تمرير txt بدون isShowText
-//}
-
 struct FormTextfield_Previews: PreviewProvider {
-    @State static var text = "" // استخدم @State لتوفير قيمة قابلة للتعديل لـ Binding
+    @State static var text = ""
     static var previews: some View {
-        FormTextfield(txt: $text) // فقط تمرير txt بدون isShowText
+        FormTextfield(txt: $text)
             .padding(20)
     }
 }
