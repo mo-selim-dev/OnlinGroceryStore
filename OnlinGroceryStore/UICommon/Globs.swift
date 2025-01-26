@@ -1,70 +1,55 @@
+//
+//  Globs.swift
+//  OnlinGroceryStore
+//
+//  Created by Mohamed Selim on 16/01/2025.
+//
+
 import SwiftUI
 
 struct Globs {
-    static let AppName = "Online Groceries"
+    static let appName = "Online Groceries"
     
-    static let BASE_URL = "http://localhost:3001/api/app/"
+    struct UDKeys {
+        /// Key for storing user payload in UserDefaults.
+        static let userPayload = "user_payload"
+        /// Key for storing user login status in UserDefaults.
+        static let userLogin = "user_login"
+    }
     
-    static let userPayload = "user_payload"
-    static let userLogin = "user_login"
-    
-    static let SV_LOGIN = BASE_URL + "login"
-    static let SV_SIGN_UP = BASE_URL + "sign_up"
-    static let SV_HOME = BASE_URL + "home"
-    static let SV_PRODUCT_DETAIL = BASE_URL + "product_detail"
-    static let SV_ADD_REMOVE_FAVORITE = BASE_URL + "add_remove_favorite"
-    static let SV_FAVORITE_LIST = BASE_URL + "favorite_list"
-    
-    static let SV_ADD_CART = BASE_URL + "add_to_cart"
-    static let SV_UPDATE_CART = BASE_URL + "update_cart"
-    static let SV_REMOVE_CART = BASE_URL + "remove_cart"
-    static let SV_CART_LIST = BASE_URL + "cart_list"
-    static let SV_ORDER_PLACE = BASE_URL + "order_place"
-    
-    static let SV_ADD_ADDRESS = BASE_URL + "add_delivery_address"
-    static let SV_UPDATE_ADDRESS = BASE_URL + "update_delivery_address"
-    static let SV_REMOVE_ADDRESS = BASE_URL + "delete_delivery_address"
-    static let SV_ADDRESS_LIST = BASE_URL + "delivery_address"
-    
-    static let SV_MY_ORDERS_LIST = BASE_URL + "my_order"
-    static let SV_MY_ORDERS_DETAIL = BASE_URL + "my_order_detail"
-    
-    static let SV_ADD_PAYMENT_METHOD = BASE_URL + "add_payment_method"
-    static let SV_REMOVE_PAYMENT_METHOD = BASE_URL + "remove_payment_method"
-    static let SV_PAYMENT_METHOD_LIST = BASE_URL + "payment_method"
-    
-    static let SV_PROMO_CODE_LIST = BASE_URL + "promo_code_list"
-    
-    static let SV_EXPLORE_LIST = BASE_URL + "explore_category_list"
-    static let SV_EXPLORE_ITEMS_LIST = BASE_URL + "explore_category_items_list"
-    
-    static let SV_NOTIFICATION_LIST = BASE_URL + "notification_list"
-    static let SV_NOTIFICATION_READ_ALL = BASE_URL + "notification_read_all"
-    
-    static let SV_UPDATE_PROFILE = BASE_URL + "update_profile"
-    static let SV_CHANGE_PASSWORD = BASE_URL + "change_password"
-    
-    static let SV_FORGOT_PASSWORD_REQUEST = BASE_URL + "forgot_password_request"
-    static let SV_FORGOT_PASSWORD_VERIFY = BASE_URL + "forgot_password_verify"
-    static let SV_FORGOT_PASSWORD_SET_PASSWORD = BASE_URL + "forgot_password_set_password"
+    struct Endpoints {
+        static let baseURL = "http://localhost:3001/api/app/"
+        
+        static let login = baseURL + "login"
+        static let signUp = baseURL + "sign_up"
+        static let home = baseURL + "home"
+    }
     
 }
 
-struct KKey {
-    static let status = "status"
-    static let message = "message"
-    static let payload = "payload"
+// MARK: - API Response Keys
+struct ResponseKeys {
+    static let status = "status"  /// Key for the status in API responses (e.g., "success" or "error").
+    static let message = "message" /// Key for the message in API responses (e.g., "Login successful").
+    static let payload = "payload" /// Key for the payload data in API responses (e.g., user data).
+
 }
 
-class Utils {
-    class func UDSET(data: Any, key: String) {
+
+class UDManager {
+    class func UDSET(_ data: Any, key: String) {
         UserDefaults.standard.set(data, forKey: key)
-        UserDefaults.standard.synchronize()
+        //        UserDefaults.standard.synchronize() //last updat...unusing of swiftui
     }
     
     class func UDValue( key: String) -> Any {
        return UserDefaults.standard.value(forKey: key) as Any
     }
+    
+//    static func UDRecavaryData(forKey key: String) -> String {
+//        return UserDefaults.standard.string(forKey: key) ?? ""
+//    }
+
     
     class func UDValueBool( key: String) -> Bool {
        return UserDefaults.standard.value(forKey: key) as? Bool ?? false
@@ -76,7 +61,105 @@ class Utils {
     
     class func UDRemove( key: String) {
         UserDefaults.standard.removeObject(forKey: key)
-        UserDefaults.standard.synchronize()
+        //        UserDefaults.standard.synchronize() //last updat...unusing of swiftui
+        
+        //// clearAll data
+        //    static func clearAll() {
+        //        if let bundleID = Bundle.main.bundleIdentifier {
+        //            UserDefaults.standard.removePersistentDomain(forName: bundleID)
+        //        }
+        //    }
+        
     }
 }
+
+
+
+/*
+ 
+ // --------------- MARK: - Update code ----------------
+ import SwiftUI
+
+ struct AppC2onstants {
+     static let AppName = "Online Groceries"
+     
+     static let BASE_URL = "http://localhost:3001/api/app/"
+     
+     struct UserDefaultsKeys {
+         /// Key for storing user payload in UserDefaults.
+         static let userPayload = "user_payload"
+         /// Key for storing user login status in UserDefaults.
+         static let userLogin = "user_login"
+     }
+     
+     
+     // MARK: - API Endpoints
+     
+     struct APIEndpoints {
+         static let BASE_URL = "http://localhost:3001/api/app/"
+         
+         // MARK: - Authentication
+         static let login = BASE_URL + "login"
+         static let signUp = BASE_URL + "sign_up"
+         
+         // MARK: - User
+         static let userPayload = "user_payload"
+         static let userLogin = "user_login"
+         
+         // MARK: - Home & Products
+         static let home = BASE_URL + "home"
+         static let productDetail = BASE_URL + "product_detail"
+         
+         // MARK: - Favorites
+         static let addRemoveFavorite = BASE_URL + "add_remove_favorite"
+         static let favoriteList = BASE_URL + "favorite_list"
+         
+         // MARK: - Cart
+         static let addToCart = BASE_URL + "add_to_cart"
+         static let updateCart = BASE_URL + "update_cart"
+         static let removeFromCart = BASE_URL + "remove_cart"
+         static let cartList = BASE_URL + "cart_list"
+         
+         // MARK: - Orders
+         static let placeOrder = BASE_URL + "order_place"
+         static let myOrdersList = BASE_URL + "my_order"
+         static let myOrdersDetail = BASE_URL + "my_order_detail"
+         
+         // MARK: - Addresses
+         static let addAddress = BASE_URL + "add_delivery_address"
+         static let updateAddress = BASE_URL + "update_delivery_address"
+         static let removeAddress = BASE_URL + "delete_delivery_address"
+         static let addressList = BASE_URL + "delivery_address"
+         
+         // MARK: - Payment
+         static let addPaymentMethod = BASE_URL + "add_payment_method"
+         static let removePaymentMethod = BASE_URL + "remove_payment_method"
+         static let paymentMethodList = BASE_URL + "payment_method"
+         
+         // MARK: - Promo Codes
+         static let promoCodeList = BASE_URL + "promo_code_list"
+         
+         // MARK: - Explore
+         static let exploreCategories = BASE_URL + "explore_category_list"
+         static let exploreItemsList = BASE_URL + "explore_category_items_list"
+         
+         // MARK: - Notifications
+         static let notificationList = BASE_URL + "notification_list"
+         static let readAllNotifications = BASE_URL + "notification_read_all"
+         
+         // MARK: - Profile
+         static let updateProfile = BASE_URL + "update_profile"
+         static let changePassword = BASE_URL + "change_password"
+         
+         // MARK: - Forgot Password
+         static let forgotPasswordRequest = BASE_URL + "forgot_password_request"
+         static let forgotPasswordVerify = BASE_URL + "forgot_password_verify"
+         static let setNewPassword = BASE_URL + "forgot_password_set_password"
+     }
+ }
+ */
+
+
+
+
 

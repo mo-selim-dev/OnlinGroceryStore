@@ -76,7 +76,7 @@ struct SignUpView: View {
         }
         .alert(isPresented: $signUpVM.showError) {
             Alert(
-                title: Text(AppConstants.appName),
+                title: Text(Globs.appName),
                 message: Text(signUpVM.errorMessage),
                 dismissButton: .default(Text("Ok"))
             )

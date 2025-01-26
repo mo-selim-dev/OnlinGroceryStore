@@ -5,42 +5,47 @@
 //  Created by Mohamed Selim on 15/01/2025.
 
 import SwiftUI
-import Combine
 
 class MainViewModel: ObservableObject {
-    static let shared = MainViewModel()
+    static var shared: MainViewModel = MainViewModel()
     
     @Published var txtUsername: String = ""
     @Published var txtEmail: String = ""
     @Published var txtPassword: String = ""
     @Published var isShowPassword: Bool = false
     
+    @Published var showError = false
+    @Published var errorMessage = ""
     @Published var isUserLogin: Bool = false
-    @Published var userObj: UserModel?
-    
-    @Published var showError: Bool = false
-    @Published var errorMessage: String = ""
+    @Published var userObj: UserModel = UserModel(dict: [:])
     
     init() {
-
-        if( UserDefaultsManager.getBool(forKey: AppConstants.API.UserDefaultsKeys.userLogin) ) {
+        
+        
+        if( UDManager.UDValueBool(key: Globs.UDKeys.userLogin) ) {
             // User Login
-            self.setUserData(userDict: UserDefaultsManager.getValue(forKey: AppConstants.API.UserDefaultsKeys.userPayload) as? [String : Any] ?? [:] )
+            self.setUserData(uDict: UDManager.UDValue(key: Globs.UDKeys.userPayload) as? NSDictionary ?? [:] )
         }else{
             // User Not Login
         }
         
 #if DEBUG
-        txtUsername = "test2"
+        txtUsername = "user2"
         txtEmail = "test@gmail.com"
         txtPassword = "123456"
 #endif
+        
+    }
+    
+    func logout(){
+        UDManager.UDSET(false, key: Globs.UDKeys.userLogin)
+        isUserLogin = false
     }
     
     // MARK: - Login
-    
-    func serviceCallLogin() {
-        // Validate input fields
+    func serviceCallLogin(){
+        
+        
         if(!txtEmail.isValidEmail) {
             self.errorMessage = "please enter valid email address"
             self.showError = true
@@ -53,56 +58,31 @@ class MainViewModel: ObservableObject {
             return
         }
         
-        // Prepare parameters
-        let parameters: [String: Any] = [
-            "email": txtEmail,
-            "password": txtPassword,
-            "dervice_token": ""
-        ]
-        
         // Make the network request
-        ServiceCall.post(parameter: parameters as NSDictionary, path: AppConstants.API.Endpoints.login) { [weak self] responseObj in
-            guard let self = self else { return }
-            
-            if let response = responseObj{
-                // Parse the response
-                let status = response["status"] as? String ?? ""
-                let message = response["message"] as? String ?? "An unknown error occurred"
-                
-                DispatchQueue.main.async {
-                    if status == "1" {
-                        // Success
-                        print("Login successful: \(response)")
-                        
-                        self.setUserData(userDict: response.value(forKey: ResponseKeys.message) as? [String : Any] ?? [:])
-                        
-                        //// Show success message
-                        //  self.showError(message: message)
-                    } else {
-                        // Failure
-                        self.showError(message: message)
-                    }
-                }
-            } else {
-                // Invalid response format
-                DispatchQueue.main.async {
-                    self.showError(message: "Invalid response from server")
+        ServiceCall.post(parameter: ["email": txtEmail, "password": txtPassword, "dervice_token":"" ], path: Globs.Endpoints.login) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
+                    
+                    
+                    
+                    self.setUserData(uDict: response.value(forKey: ResponseKeys.payload) as? NSDictionary ?? [:])
+                    
+                    
+                }else{
+                    self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Invalid response from server"
+                    self.showError = true
                 }
             }
-        } failure: { [weak self] error in
-            guard let self = self else { return }
-            
-            DispatchQueue.main.async {
-                self.showError(message: error?.localizedDescription ?? "Network request failed")
-            }
+        } failure: { error in
+            self.errorMessage = error?.localizedDescription ?? "Network request failed"
+            self.showError = true
         }
+        
     }
     
     // MARK: - Sign Up
-    
-    func serviceCallSignUp() {
+    func serviceCallSignUp(){
         
-        // Validate input fields
         if(txtUsername.isEmpty) {
             self.errorMessage = "please enter valid username"
             self.showError = true
@@ -122,85 +102,35 @@ class MainViewModel: ObservableObject {
             return
         }
         
-        // Prepare parameters
-        let parameters: [String: Any] = [
-            "username": txtUsername,
-            "email": txtEmail,
-            "password": txtPassword,
-            "dervice_token": ""
-        ]
-        
-        // Make the network request
-        ServiceCall.post(parameter: parameters as NSDictionary, path: AppConstants.API.Endpoints.login) { [weak self] responseObj in
-            guard let self = self else { return }
-            
-            if let response = responseObj {
-                // Parse the response
-                let status = response["status"] as? String ?? ""
-                let message = response["message"] as? String ?? "An unknown error occurred"
-                
-                DispatchQueue.main.async {
-                    if status == "1" {
-                        // Success
-                        print("Signup successful: \(response)")
-                        
-                        self.setUserData(userDict: response.value(forKey: ResponseKeys.message) as? [String : Any] ?? [:])
-                        
-                        //// Show success message
-                        // self.showError(message: message)
-                    } else {
-                        // Failure
-                        self.showError(message: message)
-                    }
-                }
-            } else {
-                // Invalid response format
-                DispatchQueue.main.async {
-                    self.showError(message: "Invalid response from server")
+        ServiceCall.post(parameter: [ "username": txtUsername , "email": txtEmail, "password": txtPassword, "dervice_token":"" ], path: Globs.Endpoints.signUp) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
+                    self.setUserData(uDict: response.value(forKey: ResponseKeys.payload) as? NSDictionary ?? [:])
+                }else{
+                    self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Invalid response from server"
+                    self.showError = true
                 }
             }
-        } failure: { [weak self] error in // ?
-            guard let self = self else { return }  // ?
-            
-            DispatchQueue.main.async {
-                self.showError(message: error?.localizedDescription ?? "Network request failed")
-            }
+        } failure: { error in
+            self.errorMessage = error?.localizedDescription ?? "Network request failed"
+            self.showError = true
         }
+        
     }
     
     // MARK: - Helper Methods
-    
-    /// Displays an error message.
-    private func showError(message: String) {
-        errorMessage = message
-        showError = true
-    }
-    
-    //  var userDict = response.value(forKey: ResponseKeys.message) ?? [:]
-    //  UserDefaultsManager.set(userDict, forKey: AppConstants.API.UserDefaultsKeys.userPayload)
-    //  UserDefaultsManager.set(true, forKey: AppConstants.API.UserDefaultsKeys.userLogin)
-    func setUserData(userDict: [String: Any]) {
-        // Save user data to UserDefaults
-        UserDefaultsManager.saveValue(userDict, forKey: AppConstants.API.UserDefaultsKeys.userPayload)
-        UserDefaultsManager.saveValue(true, forKey: AppConstants.API.UserDefaultsKeys.userLogin)
+    func setUserData(uDict: NSDictionary) {
         
-        // Update user object and login status
-        self.userObj = UserModel(dictionary: userDict)
+        UDManager.UDSET(uDict, key: Globs.UDKeys.userPayload)
+        UDManager.UDSET(true, key: Globs.UDKeys.userLogin)
+        self.userObj = UserModel(dict: uDict)
         self.isUserLogin = true
         
-        // Clear input fields
-        clearInputFields()
-    }
-    
-    /// Clears all input fields and resets the password visibility.
-    private func clearInputFields() {
         self.txtUsername = ""
         self.txtEmail = ""
         self.txtPassword = ""
         self.isShowPassword = false
     }
     
-    
-    
-    
-} // end MainViewModel
+} //  End MainViewModel
+

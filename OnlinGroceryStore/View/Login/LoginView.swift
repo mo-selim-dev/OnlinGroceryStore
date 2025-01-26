@@ -74,7 +74,7 @@ struct LoginView: View {
             
             .alert(isPresented: $loginVM.showError) {
                 Alert(
-                    title: Text(AppConstants.appName),
+                    title: Text(Globs.appName),
                     message: Text(loginVM.errorMessage),
                     dismissButton: .default(Text("Ok"))
                 )
