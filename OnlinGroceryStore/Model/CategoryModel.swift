@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TypeModel: Identifiable, Equatable {
+struct CategoryModel: Identifiable, Equatable {
     
     var id: Int = 0
     var name: String = ""
@@ -23,7 +23,7 @@ struct TypeModel: Identifiable, Equatable {
        
     }
     
-    static func == (lhs: TypeModel, rhs: TypeModel) -> Bool {
+    static func == (lhs: CategoryModel, rhs: CategoryModel) -> Bool {
         return lhs.id == rhs.id
     }
 }

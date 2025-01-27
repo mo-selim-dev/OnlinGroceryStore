@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - AuthViewsExtension
+// MARK: - ViewExtensions
 /// This file contains shared SwiftUI components for authentication screens (e.g., LoginView, SignUpView).
 /// These components are reusable and can be used across multiple views to ensure consistency.
 
@@ -15,7 +15,7 @@ import SwiftUI
 extension View {
     // MARK: Background Image
     /// Returns a background image for authentication screens.
-    func authBackgroundImage() -> some View {
+    func backgroundImage() -> some View {
         Image("bottom_bg")
             .resizable()
             .scaledToFill()
@@ -24,17 +24,24 @@ extension View {
     
     // MARK: Back Button
     /// Returns a back button for authentication screens.
-    /// - Parameter dismiss: The `DismissAction` to handle the back button tap.
-    func authBackButton(dismiss: DismissAction) -> some View {
+    /// - Parameters:
+    ///   - iconName: The name of the icon to be used for the back button. Default is "back".
+    ///   - iconSize: The size of the icon. Default is 25x25.
+    ///   - action: The `DismissAction` to handle the back button tap.
+    func backButton(
+        iconName: String = "back",
+        iconSize: CGSize = CGSize(width: 25, height: 25),
+        action: DismissAction
+    ) -> some View {
         VStack {
             HStack {
                 Button {
-                    dismiss()
+                    action()
                 } label: {
-                    Image("back")
+                    Image(iconName)
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 25, height: 25)
+                        .frame(width: iconSize.width, height: iconSize.height)
                 }
                 Spacer()
             }
@@ -44,9 +51,30 @@ extension View {
         .padding(.horizontal, 20)
     }
     
+    // MARK: Share Button
+    func shareButton(action: @escaping () -> Void) -> some View {
+        VStack {
+            HStack {
+                Spacer()
+                Button {
+                    action()
+                } label: {
+                    Image("share")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 25, height: 25)
+                }
+            }
+            Spacer()
+        }
+        .padding(.top, .topInsets)
+        .padding(.horizontal, 20)
+    }
+     
+    
     // MARK: Logo Image
     /// Returns a logo image for authentication screens.
-    func authLogoImage() -> some View {
+    func logoImage() -> some View {
         Image("color_logo")
             .resizable()
             .scaledToFit()
@@ -59,17 +87,25 @@ extension View {
     /// - Parameters:
     ///   - title: The title text.
     ///   - subtitle: The subtitle text.
-    func authTitleSection(title: String, subtitle: String) -> some View {
-        VStack(alignment: .leading, spacing: 4) {
+    func titleSection(
+        title: String,
+        subtitle: String,
+        titleFont: Font = .customfont(.semibold, fontSize: 26),
+        subtitleFont: Font = .customfont(.semibold, fontSize: 16),
+        titleColor: Color = .primaryText,
+        subtitleColor: Color = .secondaryText,
+        spacing: CGFloat = 4
+    ) -> some View {
+        VStack(alignment: .leading, spacing: spacing) {
             Text(title)
-                .font(.customfont(.semibold, fontSize: 26))
-                .foregroundStyle(Color.primaryText)
+                .font(titleFont)
+                .foregroundColor(titleColor)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, 4)
             
             Text(subtitle)
-                .font(.customfont(.semibold, fontSize: 16))
-                .foregroundStyle(Color.secondaryText)
+                .font(subtitleFont)
+                .foregroundColor(subtitleColor)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 .padding(.bottom, .screenWidth * 0.1)
         }
@@ -86,31 +122,54 @@ extension View {
         termsText: String = "Terms of Service",
         privacyText: String = "Privacy Policy.",
         termsColor: Color = .primaryApp,
-        privacyColor: Color = .primaryApp
+        privacyColor: Color = .primaryApp,
+        fontSize: CGFloat = 14
     ) -> some View {
         VStack {
             Text("By continuing you agree to our")
-                .font(.customfont(.medium, fontSize: 14))
+                .font(.customfont(.medium, fontSize: fontSize))
                 .foregroundColor(.secondaryText)
                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             
             HStack {
                 Text(termsText)
-                    .font(.customfont(.medium, fontSize: 14))
+                    .font(.customfont(.medium, fontSize: fontSize))
                     .foregroundColor(termsColor)
                 
                 Text(" and ")
-                    .font(.customfont(.medium, fontSize: 14))
+                    .font(.customfont(.medium, fontSize: fontSize))
                     .foregroundColor(.secondaryText)
                 
                 Text(privacyText)
-                    .font(.customfont(.medium, fontSize: 14))
+                    .font(.customfont(.medium, fontSize: fontSize))
                     .foregroundColor(privacyColor)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             }
             .padding(.bottom, .screenWidth * 0.02)
         }
     }
+
+    
+    /// Applies a corner radius to specific corners of the view.
+    /// - Parameters:
+    ///   - cornerRadius: The radius of the corners.
+    ///   - corners: The corners to apply the radius to. Default is `.allCorners`.
+    func cornerRadius(_ cornerRadius: CGFloat, corners: UIRectCorner = .allCorners) -> some View {
+        clipShape(RoundedCorner(radius: cornerRadius, corners: corners))
+    }
 }
 
-
+/// A custom shape that applies a corner radius to specific corners.
+struct RoundedCorner: Shape {
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(
+            roundedRect: rect,
+            byRoundingCorners: corners,
+            cornerRadii: CGSize(width: radius, height: radius)
+        )
+        return Path(path.cgPath)
+    }
+}
