@@ -21,17 +21,17 @@ class HomeViewModel: ObservableObject
     @Published var offerArr: [ProductModel] = []
     @Published var bestArr: [ProductModel] = []
     @Published var listArr: [ProductModel] = []
-    @Published var typeArr: [TypeModel] = []
+    @Published var typeArr: [CategoryModel] = []
     
     
     init() {
-        serviceCallList()
+        serviceCallHome()
     }
 
     
-        // MARK: - Login
+        // MARK: - HomeView
 
-    func serviceCallList(){
+    func serviceCallHome(){
         ServiceCall.post(parameter: [:], path: Globs.Endpoints.home, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
@@ -54,7 +54,7 @@ class HomeViewModel: ObservableObject
                         
                         self.typeArr = (payloadObj.value(forKey: "type_list") as? NSArray ?? []).map({ obj in
                             
-                            return TypeModel(dict: obj as? NSDictionary ?? [:])
+                            return CategoryModel(dict: obj as? NSDictionary ?? [:])
                         })
                     }
                     

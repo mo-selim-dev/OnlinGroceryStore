@@ -14,18 +14,18 @@ struct LoginView: View {
     var body: some View {
         ZStack {
             // Background Image
-            authBackgroundImage()
+            backgroundImage()
             
             // Back Button
-            authBackButton(dismiss: dismiss)
+            backButton(action: dismiss)
             
             // Main Content
             VStack(spacing: 20) {
                 // Logo
-                authLogoImage()
+                logoImage()
                 
                 // Title and Subtitle
-                authTitleSection(title: "Login", subtitle: "Enter your email and password")
+                titleSection(title: "Login", subtitle: "Enter your email and password")
                 
                 // Email Field
                 FormTextfield(

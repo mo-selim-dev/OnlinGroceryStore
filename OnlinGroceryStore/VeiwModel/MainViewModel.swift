@@ -42,7 +42,7 @@ class MainViewModel: ObservableObject {
         isUserLogin = false
     }
     
-    // MARK: - Login
+    // MARK: - LoginView
     func serviceCallLogin(){
         
         
@@ -80,7 +80,7 @@ class MainViewModel: ObservableObject {
         
     }
     
-    // MARK: - Sign Up
+    // MARK: - SignUpView
     func serviceCallSignUp(){
         
         if(txtUsername.isEmpty) {

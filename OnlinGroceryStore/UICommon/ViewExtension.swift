@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-// MARK: - ViewExtensions
+// MARK: - ViewExtension
 /// This file contains shared SwiftUI components for authentication screens (e.g., LoginView, SignUpView).
 /// These components are reusable and can be used across multiple views to ensure consistency.
 
@@ -70,7 +70,7 @@ extension View {
         .padding(.top, .topInsets)
         .padding(.horizontal, 20)
     }
-     
+    
     
     // MARK: Logo Image
     /// Returns a logo image for authentication screens.
@@ -148,18 +148,18 @@ extension View {
             .padding(.bottom, .screenWidth * 0.02)
         }
     }
-
     
-    /// Applies a corner radius to specific corners of the view.
-    /// - Parameters:
-    ///   - cornerRadius: The radius of the corners.
-    ///   - corners: The corners to apply the radius to. Default is `.allCorners`.
-    func cornerRadius(_ cornerRadius: CGFloat, corners: UIRectCorner = .allCorners) -> some View {
-        clipShape(RoundedCorner(radius: cornerRadius, corners: corners))
+    
+        /// Applies a corner radius to specific corners of the view.
+        /// - Parameters:
+        ///   - cornerRadius: The radius of the corners.
+        ///   - corner: The corner to apply the radius.
+    func cornerRadius(_ cornerRadius: CGFloat, corner: UIRectCorner ) -> some View {
+            clipShape(RoundedCorner(radius: cornerRadius, corners: corner))
+        }
     }
-}
-
-/// A custom shape that applies a corner radius to specific corners.
+    
+    /// A custom shape that applies a corner radius to specific corners.
 struct RoundedCorner: Shape {
     var radius: CGFloat = .infinity
     var corners: UIRectCorner = .allCorners
@@ -173,3 +173,4 @@ struct RoundedCorner: Shape {
         return Path(path.cgPath)
     }
 }
+ 

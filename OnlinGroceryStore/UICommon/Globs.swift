@@ -22,7 +22,10 @@ struct Globs {
         
         static let login = baseURL + "login"
         static let signUp = baseURL + "sign_up"
+        
         static let home = baseURL + "home"
+        static let productDetail = baseURL + "product_detail"
+
     }
     
 }

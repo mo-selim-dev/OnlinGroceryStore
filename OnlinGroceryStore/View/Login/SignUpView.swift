@@ -14,13 +14,13 @@ struct SignUpView: View {
     
     var body: some View {
         ZStack {
-            authBackgroundImage()
-            authBackButton(dismiss: dismiss)
+            backgroundImage()
+            backButton(action: dismiss)
             
             ScrollView {
                 VStack {
-                    authLogoImage()
-                    authTitleSection(title: "Sign Up", subtitle: "Enter your credentials to continue")
+                    logoImage()
+                    titleSection(title: "Sign Up", subtitle: "Enter your credentials to continue")
                     
                     FormTextfield(
                         title: "Username",
