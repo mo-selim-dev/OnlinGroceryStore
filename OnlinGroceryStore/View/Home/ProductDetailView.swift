@@ -61,6 +61,8 @@ struct ProductDetailView: View {
                     
                     Button {
 //                        detailVM.addSubQTY(isAdd: false)
+                        detailVM.updateQuantity(isIncrement: false)
+
                     } label: {
                         
                         Image( "subtack"  )
@@ -81,7 +83,7 @@ struct ProductDetailView: View {
                         )
                     
                     Button {
-//                        detailVM.addSubQTY(isAdd: true)
+                        detailVM.updateQuantity(isIncrement: true)
                     } label: {
                         
                         Image( "add_green"  )
@@ -111,8 +113,8 @@ struct ProductDetailView: View {
                         .foregroundColor(.primaryText)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                     Button {
-                        withAnimation {
-//                            detailVM.showDetail()
+                        withAnimation(.snappy) {
+                            detailVM.showDetails()
                         }
                         
                     } label: {
@@ -263,21 +265,21 @@ struct ProductDetailView: View {
 #Preview {
     ProductDetailView(detailVM: ProductDetailViewModel(prodObj: ProductModel(dict: [
         
-                        "prod_id": 6,
-                        "cat_id": 1,
-                        "brand_id": 1,
-                        "type_id": 1,
-                        "name": "Red Apple",
-                        "detail": "Apples contain key nutrients, including fiber and antioxidants. They may offer health benefits, including lowering blood sugar levels and benefitting heart health.",
-                        "unit_name": "kg",
-                        "unit_value": "1",
-                        "nutrition_weight": "182g",
-                        "price": 1.99,
-                        "image": "http://localhost:3001/img/product/202307310951365136W6nJvPCdzQ.png",
-                        "cat_name": "Frash Fruits & Vegetable",
-                        "type_name": "Pulses",
-                        "is_fav": 0,
-                        "avg_rating": 0
+                       "prod_id": 11,
+                       "cat_id": 1,
+                       "brand_id": 1,
+                       "type_id": 1,
+                       "name": "Ginger",
+                       "detail": "Ginger may have numerous health benefits due to its anti-inflammatory, anti-nausea, and other properties. It may help you lose weight, manage arthritis, reduce menstrual symptoms, and more.",
+                       "unit_name": "gm",
+                       "unit_value": "250",
+                       "nutrition_weight": "11g",
+                       "price": 2.99,
+                       "image": "http://localhost:3001/img/product/202307311018321832QsO9noUdBS.png",
+                       "cat_name": "Frash Fruits & Vegetable",
+                       "type_name": "Pulses",
+                       "is_fav": 0,
+                       "avg_rating": 0
         
     ])))
 }

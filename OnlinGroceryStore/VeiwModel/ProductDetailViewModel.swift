@@ -21,14 +21,14 @@ class ProductDetailViewModel: ObservableObject
     @Published var isFav: Bool = false
     @Published var isShowDetails: Bool = false
     @Published var isShowNutrition: Bool = false
-    @Published var quantity: Int = 0
+    @Published var quantity: Int = 1
 
     func showDetails(){
-        isShowDetails = !isShowDetails
+        isShowDetails.toggle()
     }
     
     func showNutrition(){
-        isShowDetails = !isShowDetails
+        isShowNutrition.toggle()
     }
     
     func updateQuantity(isIncrement: Bool = true) {
