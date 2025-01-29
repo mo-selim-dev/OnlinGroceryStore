@@ -20,11 +20,63 @@ struct Globs {
     struct Endpoints {
         static let baseURL = "http://localhost:3001/api/app/"
         
+        // MARK: - Authentication
         static let login = baseURL + "login"
         static let signUp = baseURL + "sign_up"
         
+        // MARK: - Home & Products
         static let home = baseURL + "home"
         static let productDetail = baseURL + "product_detail"
+        
+        // MARK: - Favorites
+        static let addRemoveFavorite = baseURL + "add_remove_favorite"
+        static let favoriteList = baseURL + "favorite_list"
+        
+        // MARK: - ExploreCategory
+        static let exploreCategoryList = baseURL + "explore_category_list"
+        static let exploreCategoryItemsList = baseURL + "explore_category_items_list"
+        
+//        // MARK: - Cart
+//        static let addToCart = baseURL + "add_to_cart"
+//        static let updateCart = baseURL + "update_cart"
+//        static let removeFromCart = baseURL + "remove_cart"
+//        static let cartList = baseURL + "cart_list"
+//        
+//        // MARK: - Orders
+//        static let placeOrder = baseURL + "order_place"
+//        static let myOrdersList = baseURL + "my_order"
+//        static let myOrdersDetail = baseURL + "my_order_detail"
+//        
+//        // MARK: - Addresses
+//        static let addAddress = baseURL + "add_delivery_address"
+//        static let updateAddress = baseURL + "update_delivery_address"
+//        static let removeAddress = baseURL + "delete_delivery_address"
+//        static let addressList = baseURL + "delivery_address"
+//        
+//        // MARK: - Payment
+//        static let addPaymentMethod = baseURL + "add_payment_method"
+//        static let removePaymentMethod = baseURL + "remove_payment_method"
+//        static let paymentMethodList = baseURL + "payment_method"
+//        
+//        // MARK: - Promo Codes
+//        static let promoCodeList = baseURL + "promo_code_list"
+//        
+//        // MARK: - Explore
+//        static let exploreCategories = baseURL + "explore_category_list"
+//        static let exploreItemsList = baseURL + "explore_category_items_list"
+//        
+//        // MARK: - Notifications
+//        static let notificationList = baseURL + "notification_list"
+//        static let readAllNotifications = baseURL + "notification_read_all"
+//        
+//        // MARK: - Profile
+//        static let updateProfile = baseURL + "update_profile"
+//        static let changePassword = baseURL + "change_password"
+//        
+//        // MARK: - Forgot Password
+//        static let forgotPasswordRequest = baseURL + "forgot_password_request"
+//        static let forgotPasswordVerify = baseURL + "forgot_password_verify"
+//        static let setNewPassword = baseURL + "forgot_password_set_password"
 
     }
     
@@ -78,91 +130,4 @@ class UDManager {
 
 
 
-/*
  
- // --------------- MARK: - Update code ----------------
- import SwiftUI
-
- struct AppC2onstants {
-     static let AppName = "Online Groceries"
-     
-     static let BASE_URL = "http://localhost:3001/api/app/"
-     
-     struct UserDefaultsKeys {
-         /// Key for storing user payload in UserDefaults.
-         static let userPayload = "user_payload"
-         /// Key for storing user login status in UserDefaults.
-         static let userLogin = "user_login"
-     }
-     
-     
-     // MARK: - API Endpoints
-     
-     struct APIEndpoints {
-         static let BASE_URL = "http://localhost:3001/api/app/"
-         
-         // MARK: - Authentication
-         static let login = BASE_URL + "login"
-         static let signUp = BASE_URL + "sign_up"
-         
-         // MARK: - User
-         static let userPayload = "user_payload"
-         static let userLogin = "user_login"
-         
-         // MARK: - Home & Products
-         static let home = BASE_URL + "home"
-         static let productDetail = BASE_URL + "product_detail"
-         
-         // MARK: - Favorites
-         static let addRemoveFavorite = BASE_URL + "add_remove_favorite"
-         static let favoriteList = BASE_URL + "favorite_list"
-         
-         // MARK: - Cart
-         static let addToCart = BASE_URL + "add_to_cart"
-         static let updateCart = BASE_URL + "update_cart"
-         static let removeFromCart = BASE_URL + "remove_cart"
-         static let cartList = BASE_URL + "cart_list"
-         
-         // MARK: - Orders
-         static let placeOrder = BASE_URL + "order_place"
-         static let myOrdersList = BASE_URL + "my_order"
-         static let myOrdersDetail = BASE_URL + "my_order_detail"
-         
-         // MARK: - Addresses
-         static let addAddress = BASE_URL + "add_delivery_address"
-         static let updateAddress = BASE_URL + "update_delivery_address"
-         static let removeAddress = BASE_URL + "delete_delivery_address"
-         static let addressList = BASE_URL + "delivery_address"
-         
-         // MARK: - Payment
-         static let addPaymentMethod = BASE_URL + "add_payment_method"
-         static let removePaymentMethod = BASE_URL + "remove_payment_method"
-         static let paymentMethodList = BASE_URL + "payment_method"
-         
-         // MARK: - Promo Codes
-         static let promoCodeList = BASE_URL + "promo_code_list"
-         
-         // MARK: - Explore
-         static let exploreCategories = BASE_URL + "explore_category_list"
-         static let exploreItemsList = BASE_URL + "explore_category_items_list"
-         
-         // MARK: - Notifications
-         static let notificationList = BASE_URL + "notification_list"
-         static let readAllNotifications = BASE_URL + "notification_read_all"
-         
-         // MARK: - Profile
-         static let updateProfile = BASE_URL + "update_profile"
-         static let changePassword = BASE_URL + "change_password"
-         
-         // MARK: - Forgot Password
-         static let forgotPasswordRequest = BASE_URL + "forgot_password_request"
-         static let forgotPasswordVerify = BASE_URL + "forgot_password_verify"
-         static let setNewPassword = BASE_URL + "forgot_password_set_password"
-     }
- }
- */
-
-
-
-
-

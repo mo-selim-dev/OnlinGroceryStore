@@ -10,15 +10,15 @@ import SwiftUI
 
 struct ExploreCategoryModel: Identifiable, Equatable {
     var id: Int = 0
-    var catName: String = ""
+    var name: String = ""
     var image: String = ""
-    var color: String = ""
-    
+    var color: Color = Color.primaryApp
+
     init(dict: NSDictionary) {
         self.id = dict["cat_id"] as? Int ?? 0
-        self.catName = dict["cat_name"] as? String ?? ""
+        self.name = dict["cat_name"] as? String ?? ""
         self.image = dict["image"] as? String ?? ""
-        self.color = dict["color"] as? String ?? "000000"
+        self.color =  Color(hex: dict["color"] as? String ?? "000000")
 
     }
     

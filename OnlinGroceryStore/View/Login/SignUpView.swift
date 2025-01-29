@@ -10,7 +10,7 @@ import SwiftUI
 struct SignUpView: View {
     
     @Environment(\.dismiss) var dismiss
-    @StateObject var signUpVM = MainViewModel.shared
+    @StateObject var mainVM = MainViewModel.shared
     
     var body: some View {
         ZStack {
@@ -25,14 +25,14 @@ struct SignUpView: View {
                     FormTextfield(
                         title: "Username",
                         placholder: "Enter your Username",
-                        txt: $signUpVM.txtUsername
+                        txt: $mainVM.txtUsername
                     )
                     .padding(.bottom, .screenWidth * 0.07)
                     
                     FormTextfield(
                         title: "Email",
                         placholder: "Enter your email address",
-                        txt: $signUpVM.txtEmail,
+                        txt: $mainVM.txtEmail,
                         keyboardType: .emailAddress
                     )
                     .padding(.bottom, .screenWidth * 0.07)
@@ -40,15 +40,15 @@ struct SignUpView: View {
                     FormSecureField(
                         title: "Password",
                         placholder: "Enter your password",
-                        txt: $signUpVM.txtPassword,
-                        isShowPassword: $signUpVM.isShowPassword
+                        txt: $mainVM.txtPassword,
+                        isShowPassword: $mainVM.isShowPassword
                     )
                     .padding(.bottom, .screenWidth * 0.02)
                     
                     termsAndConditionsSection()
                     
                     RoundButton(title: "Sign Up") {
-                        signUpVM.serviceCallSignUp()
+                        mainVM.serviceCallSignUp()
                     }
                     .padding(.bottom, .screenWidth * 0.05)
                     
@@ -74,10 +74,10 @@ struct SignUpView: View {
                 .padding(.bottom, .bottomInsets)
             }
         }
-        .alert(isPresented: $signUpVM.showError) {
+        .alert(isPresented: $mainVM.showError) {
             Alert(
                 title: Text(Globs.appName),
-                message: Text(signUpVM.errorMessage),
+                message: Text(mainVM.errorMessage),
                 dismissButton: .default(Text("Ok"))
             )
         }

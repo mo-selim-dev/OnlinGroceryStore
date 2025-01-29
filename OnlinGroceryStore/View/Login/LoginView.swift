@@ -9,7 +9,7 @@ import SwiftUI
 
 struct LoginView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject private var loginVM = MainViewModel.shared
+    @StateObject private var mainVM = MainViewModel.shared
     
     var body: some View {
         ZStack {
@@ -31,7 +31,7 @@ struct LoginView: View {
                 FormTextfield(
                     title: "Email",
                     placholder: "Enter your email address",
-                    txt: $loginVM.txtEmail,
+                    txt: $mainVM.txtEmail,
                     keyboardType: .emailAddress
                 )
                 .padding(.bottom, 20)
@@ -40,14 +40,14 @@ struct LoginView: View {
                 FormSecureField(
                     title: "Password",
                     placholder: "Enter your password",
-                    txt: $loginVM.txtPassword,
-                    isShowPassword: $loginVM.isShowPassword
+                    txt: $mainVM.txtPassword,
+                    isShowPassword: $mainVM.isShowPassword
                 )
                 .padding(.bottom, 10)
                 
                 // Login Button
                 RoundButton(title: "Log In") {
-                    loginVM.serviceCallLogin()
+                    mainVM.serviceCallLogin()
                 }
                 .padding(.bottom, 20)
                 
@@ -72,10 +72,10 @@ struct LoginView: View {
             .padding(.horizontal, 20)
             .padding(.bottom, .bottomInsets)
             
-            .alert(isPresented: $loginVM.showError) {
+            .alert(isPresented: $mainVM.showError) {
                 Alert(
                     title: Text(Globs.appName),
-                    message: Text(loginVM.errorMessage),
+                    message: Text(mainVM.errorMessage),
                     dismissButton: .default(Text("Ok"))
                 )
             }

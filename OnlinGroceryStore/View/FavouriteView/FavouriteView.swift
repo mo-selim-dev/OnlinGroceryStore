@@ -1,3 +1,11 @@
+//
+//  FavouriteView.swift
+//  OnlinGroceryStore
+//
+//  Created by Mohamed Selim on 28/01/2025.
+//
+
+
 import SwiftUI
 import SDWebImageSwiftUI
 
@@ -53,7 +61,7 @@ struct FavouriteView: View {
             
         }
         .onAppear{
-            favVM.serviceCallList()
+//            favVM.serviceCallFavourite()
         }
         .ignoresSafeArea()
     }

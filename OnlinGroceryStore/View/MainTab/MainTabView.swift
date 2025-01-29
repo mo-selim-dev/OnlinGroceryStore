@@ -10,63 +10,81 @@ import Combine
 
 struct MainTabView: View {
     
-    @ObservedObject var mainTabVM = HomeViewModel.shared
+    @ObservedObject var homeVM = HomeViewModel.shared
     
     var body: some View {
         ZStack{
+            
+                
+                if(homeVM.selectTab == 0){
+                    HomeView()
+                }else if(homeVM.selectTab == 1){
+                    ExploreView()
+                }else if(homeVM.selectTab == 2){
+                    HomeView()
+                }else if(homeVM.selectTab == 3){
+                    FavouriteView()
+                }else if(homeVM.selectTab == 4){
+                    ExploreView()
+                }
+            
+                
+//                TabView(selection: $homeVM.selectTab) {
+//                    HomeView().tag(0)
+//                    ExploreView().tag(1)
+//                    ExploreView().tag(2)
+//                    ExploreView().tag(3)
+//                    ExploreView().tag(4)
+//                }
+//    //                             .onAppear{
+//    //                                 UIScrollView.appearance().isScrollEnabled = false
+//    //                           }
+//                .tabViewStyle(.page(indexDisplayMode: .never))
+//                .onChange(of: homeVM.selectTab) { newValue in
+//                    debugPrint("Sel Tab: \(newValue)")
+//                }
+            
             VStack{
-                TabView(selection: $mainTabVM.selectTab) {
-                    HomeView().tag(0)
-                    ExploreView().tag(1)
-                    ExploreView().tag(2)
-                    ExploreView().tag(3)
-                    ExploreView().tag(4)
-                }
-                //                .onAppear{
-                //                     UIScrollView.appearance().isScrollEnabled = false
-                //                }
-                .tabViewStyle(.page(indexDisplayMode: .never))
-                .onChange(of: mainTabVM.selectTab) { newValue in
-                    debugPrint("Sel Tab: \(newValue)")
-                }
+                
+                Spacer()
                 
                 HStack {
-                    TabButton(title: "Shop", icon: "store_tab", isSelect: mainTabVM.selectTab == 0) {
+                    TabButton(title: "Shop", icon: "store_tab", isSelect: homeVM.selectTab == 0) {
                         
                         DispatchQueue.main.async {
                             withAnimation {
-                                mainTabVM.selectTab = 0
+                                homeVM.selectTab = 0
                             }
                         }
                         
                     }
                     
-                    TabButton(title: "Explore", icon: "explore_tab", isSelect: mainTabVM.selectTab == 1) {
+                    TabButton(title: "Explore", icon: "explore_tab", isSelect: homeVM.selectTab == 1) {
                         DispatchQueue.main.async {
                             withAnimation {
-                                mainTabVM.selectTab = 1
+                                homeVM.selectTab = 1
                             }
                         }                    }
                     
-                    TabButton(title: "Cart", icon: "cart_tab", isSelect: mainTabVM.selectTab == 2) {
+                    TabButton(title: "Cart", icon: "cart_tab", isSelect: homeVM.selectTab == 2) {
                         DispatchQueue.main.async {
                             withAnimation {
-                                mainTabVM.selectTab = 2
+                                homeVM.selectTab = 2
                             }
                         }                    }
                     
-                    TabButton(title: "Favourite", icon: "fav_tab", isSelect: mainTabVM.selectTab == 3) {
+                    TabButton(title: "Favourite", icon: "fav_tab", isSelect: homeVM.selectTab == 3) {
                         DispatchQueue.main.async {
                             withAnimation {
-                                mainTabVM.selectTab = 3
+                                homeVM.selectTab = 3
                             }
                         }
                     }
                     
-                    TabButton(title: "Account", icon: "account_tab", isSelect: mainTabVM.selectTab == 4) {
+                    TabButton(title: "Account", icon: "account_tab", isSelect: homeVM.selectTab == 4) {
                         DispatchQueue.main.async {
                             withAnimation {
-                                mainTabVM.selectTab = 4
+                                homeVM.selectTab = 4
                             }
                         }
                     }

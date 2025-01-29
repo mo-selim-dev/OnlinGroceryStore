@@ -1,38 +1,38 @@
 //
-//  FavouriteViewModel.swift
+//  FavouriteViewModel 2.swift
 //  OnlinGroceryStore
 //
 //  Created by Mohamed Selim on 28/01/2025.
 //
 
 
+
 import SwiftUI
 
-class FavouriteViewModel: ObservableObject
+class ExploreCategoryViewModel: ObservableObject
 {
-    static var shared: FavouriteViewModel = FavouriteViewModel()
+    static var shared: ExploreItemViewModel = ExploreItemViewModel()
     
     @Published var showError = false
     @Published var errorMessage = ""
     
-    @Published var listArr: [ProductModel] = []
+    @Published var listArr: [ExploreCategoryModel] = []
     
     
     init() {
-        serviceCallFavourite()
+        serviceCallExploreCategory()
     }
-
     
-        // MARK: - HomeView
+        // MARK: - ExploreView
 
-    func serviceCallFavourite(){
-        ServiceCall.post(parameter: [:], path: Globs.Endpoints.favoriteList, isToken: true ) { responseObj in
+    func serviceCallExploreCategory(){
+        ServiceCall.post(parameter: [:], path: Globs.Endpoints.exploreCategoryList, isToken: true ) { responseObj in
              
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
                     
                     self.listArr = (response.value(forKey: ResponseKeys.payload) as? NSArray ?? []).map({ obj in
-                        return ProductModel(dict: obj as? NSDictionary ?? [:])
+                        return ExploreCategoryModel(dict: obj as? NSDictionary ?? [:])
                     })
                     
                     

@@ -203,39 +203,42 @@ struct ProductDetailView: View {
             }
             .padding(.horizontal, 20)
             
-            HStack{
+            HStack(spacing: 2){
                 Text("Review")
                     .font(.customfont(.semibold, fontSize: 16))
                     .foregroundColor(.primaryText)
                     .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                 
-                HStack(spacing: 2){
-                    ForEach( 1...5 , id: \.self) { index in
-                        
-                        Image(systemName:  "star.fill")
+                HStack{
+                    ForEach(1...5, id: \.self) { index in
+                        Image(systemName: "star.fill")
                             .resizable()
                             .scaledToFit()
-                                .foregroundColor( Color.orange)
-                                .frame(width: 15, height: 15)
-                            
+                            .foregroundStyle(.orange)
+                            .frame(width: 15, height: 15)
                     }
                 }
                 
                 Button {
-                   
                     
                 } label: {
                     
-                    Image( "next" )
+                    Image("next")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 15, height: 15)
                         .padding(15)
                 }
                 .foregroundColor(Color.primaryText)
-
+                
             }
-            .padding(.horizontal, 20)
+             .padding(.horizontal, 20)
+            
+            
+            RoundButton(title: "Add To Basket") {
+                
+            }
+            .padding(20)
             
 //            RoundButton(title: "Add To Basket") {
 //                CartViewModel.serviceCallAddToCart(prodId: detailVM.pObj.prodId, qty: detailVM.qty) { isDone, msg  in
@@ -255,31 +258,36 @@ struct ProductDetailView: View {
         }
             
             
-        }        .ignoresSafeArea()
-
-    
-        
+        }
+        .alert(isPresented: $detailVM.showError, content: {
+            
+            Alert(title: Text(Globs.appName), message: Text(detailVM.errorMessage)  , dismissButton: .default(Text("Ok"))  )
+        })
+        .navigationTitle("")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarHidden(true)
+        .ignoresSafeArea()
     }
 }
 
 #Preview {
     ProductDetailView(detailVM: ProductDetailViewModel(prodObj: ProductModel(dict: [
         
-                       "prod_id": 11,
-                       "cat_id": 1,
-                       "brand_id": 1,
-                       "type_id": 1,
-                       "name": "Ginger",
-                       "detail": "Ginger may have numerous health benefits due to its anti-inflammatory, anti-nausea, and other properties. It may help you lose weight, manage arthritis, reduce menstrual symptoms, and more.",
-                       "unit_name": "gm",
-                       "unit_value": "250",
-                       "nutrition_weight": "11g",
-                       "price": 2.99,
-                       "image": "http://localhost:3001/img/product/202307311018321832QsO9noUdBS.png",
-                       "cat_name": "Frash Fruits & Vegetable",
-                       "type_name": "Pulses",
-                       "is_fav": 0,
-                       "avg_rating": 0
+                        "prod_id": 7,
+                        "cat_id": 1,
+                        "brand_id": 1,
+                        "type_id": 1,
+                        "name": "Oranges",
+                        "detail": "Many types of oranges are high in fiber and beneficial vitamins, like vitamin C. They also contain antioxidants which can have various health benefits, including supporting immune function.",
+                        "unit_name": "kg",
+                        "unit_value": "1",
+                        "nutrition_weight": "140g",
+                        "price": 0.99,
+                        "image": "http://localhost:3001/img/product/202307310958175817ytVf7AVIOl.png",
+                        "cat_name": "Frash Fruits & Vegetable",
+                        "type_name": "Pulses",
+                        "is_fav": 0,
+                        "avg_rating": 0
         
     ])))
 }
