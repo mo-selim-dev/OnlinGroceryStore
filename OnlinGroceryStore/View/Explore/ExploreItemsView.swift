@@ -44,21 +44,7 @@ struct ExploreItemsView: View {
                 Spacer()
                 
             }
-            
-            //                HStack{
-            //                    backButton(action: dismiss)
-            //
-            //                    Text("Find Products")
-            //                        .font(.customfont(.bold, fontSize: 20))
-            ////                        .frame(height: 46)
-            //
-            //                    shareButton {
-            //
-            //                    }
-            //
-            //
-            //            }
-            
+   
         }
         .ignoresSafeArea()
     }
