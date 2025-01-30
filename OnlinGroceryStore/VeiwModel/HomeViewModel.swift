@@ -25,13 +25,13 @@ class HomeViewModel: ObservableObject
     
     
     init() {
-        serviceCallHome()
+        serviceCallList()
     }
 
     
         // MARK: - HomeView
 
-    func serviceCallHome(){
+    func serviceCallList(){
         ServiceCall.post(parameter: [:], path: Globs.Endpoints.home, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {

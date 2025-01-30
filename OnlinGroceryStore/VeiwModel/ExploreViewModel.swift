@@ -9,9 +9,9 @@
 
 import SwiftUI
 
-class ExploreCategoryViewModel: ObservableObject
+class ExploreViewModel: ObservableObject
 {
-    static var shared: ExploreItemViewModel = ExploreItemViewModel()
+    static var shared: ExploreViewModel = ExploreViewModel()
     
     @Published var showError = false
     @Published var errorMessage = ""
@@ -20,12 +20,12 @@ class ExploreCategoryViewModel: ObservableObject
     
     
     init() {
-        serviceCallExploreCategory()
+        serviceCallList()
     }
     
         // MARK: - ExploreView
 
-    func serviceCallExploreCategory(){
+    func serviceCallList(){
         ServiceCall.post(parameter: [:], path: Globs.Endpoints.exploreCategoryList, isToken: true ) { responseObj in
              
             if let response = responseObj as? NSDictionary {

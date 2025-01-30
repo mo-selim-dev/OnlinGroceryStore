@@ -6,35 +6,35 @@
 //
 
 
-
 import SwiftUI
 
-class ExploreItemViewModel : ObservableObject
+class ExploreItemViewModel: ObservableObject
 {
-    static var shared: ExploreItemViewModel  = ExploreItemViewModel ()
     
+    @Published var cObj: ExploreCategoryModel = ExploreCategoryModel(dict: [:])
     @Published var showError = false
     @Published var errorMessage = ""
     
-    @Published var listArr: [ExploreCategoryModel] = []
-    
-    
-    init() {
-        serviceCallExploreCategoryItem()
-    }
-    
-        // MARK: - HomeView
+    @Published var listArr: [ProductModel] = []
 
-    func serviceCallExploreCategoryItem(){
-        ServiceCall.post(parameter: [:], path: Globs.Endpoints.exploreCategoryItemsList, isToken: true ) { responseObj in
-             
+
+    init(catObj: ExploreCategoryModel) {
+        self.cObj = catObj
+        serviceCallList()
+    }
+
+        
+    func serviceCallList(){
+        ServiceCall.post(parameter: ["cat_id": self.cObj.id], path: Globs.Endpoints.exploreCategoryItemsList, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
                     
-                    self.listArr = (response.value(forKey: ResponseKeys.payload) as? NSArray ?? []).map({ obj in
-                        return ExploreCategoryModel(dict: obj as? NSDictionary ?? [:])
-                    })
-                    
+                        
+                        self.listArr = (response.value(forKey: ResponseKeys.payload) as? NSArray ?? []).map({ obj in
+                            
+                            return ProductModel(dict: obj as? NSDictionary ?? [:])
+                        })
+                        
                     
                 }else{
                     self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Invalid response from server"
@@ -49,8 +49,3 @@ class ExploreItemViewModel : ObservableObject
 
     
 }
-
-
-
-
-

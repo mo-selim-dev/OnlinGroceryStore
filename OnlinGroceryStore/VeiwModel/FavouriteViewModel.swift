@@ -19,13 +19,13 @@ class FavouriteViewModel: ObservableObject
     
     
     init() {
-        serviceCallFavourite()
+        serviceCallList()
     }
 
     
         // MARK: - HomeView
 
-    func serviceCallFavourite(){
+    func serviceCallList(){
         ServiceCall.post(parameter: [:], path: Globs.Endpoints.favoriteList, isToken: true ) { responseObj in
              
             if let response = responseObj as? NSDictionary {

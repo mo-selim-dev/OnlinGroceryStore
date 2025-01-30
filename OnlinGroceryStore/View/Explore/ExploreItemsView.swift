@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ExploreItemsView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var ExploreVM = ExploreViewModel.shared
+    @StateObject var itemsVM = ExploreViewModel.shared
     @State var txtSearch: String = ""
     
     var colums =  [
@@ -21,19 +21,43 @@ struct ExploreItemsView: View {
     var body: some View {
         ZStack{
             
-                HStack{
-                    backButton(action: dismiss)
+            VStack {
+
+                CustomAppBar(
+                    leftIcon: Image("back"),
+                    leftAction: { print("Left icon tapped") },
+                    leftIconSize: 15,
+                    leftIconColor: .black,
                     
-                    Text("Find Products")
-                        .font(.customfont(.bold, fontSize: 20))
-//                        .frame(height: 46)
+                    rightIcon: Image(systemName: "gear"),
+                    rightAction: { print("Right icon tapped") },
+                    rightIconSize: 30,
+                    rightIconColor: .blue,
                     
-                    shareButton {
-                        
-                    }
-                    
-                    
+                    title: "My App",
+                    textAlignment: .center,
+                    font: .system(size: 26, weight: .semibold),
+                    colorAppBar: .white,
+                    titleColor: .green
+                )
+                
+                Spacer()
+                
             }
+            
+            //                HStack{
+            //                    backButton(action: dismiss)
+            //
+            //                    Text("Find Products")
+            //                        .font(.customfont(.bold, fontSize: 20))
+            ////                        .frame(height: 46)
+            //
+            //                    shareButton {
+            //
+            //                    }
+            //
+            //
+            //            }
             
         }
         .ignoresSafeArea()
