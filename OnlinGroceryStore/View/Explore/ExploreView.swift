@@ -5,10 +5,11 @@
 //  Created by Mohamed Selim on 23/01/2025.
 //
 
+
 import SwiftUI
 
 struct ExploreView: View {
-    @StateObject var ExploreVM = ExploreViewModel.shared
+    @StateObject var explorVM = ExploreViewModel.shared
     @State var txtSearch: String = ""
     
     var colums =  [
@@ -39,13 +40,13 @@ struct ExploreView: View {
                 
                 ScrollView {
                     LazyVGrid(columns: colums, spacing: 20) {
-                        ForEach(ExploreVM.listArr, id: \.id) {
+                        ForEach(explorVM.listArr, id: \.id) {
                             cObj in
                             
-//                            NavigationLink(destination: ExploreItemsView(itemsVM: ExploreItemViewModel(catObj: cObj) ) ) {
+                            NavigationLink(destination: ExploreItemsView(itemsVM: ExploreItemViewModel(catObj: cObj) ) ) {
                                 ExploreCategoryCell(cObj: cObj)
                                     .aspectRatio( 0.95, contentMode: .fill)
-//                            }
+                            }
                             
                         }
                     }
@@ -62,5 +63,9 @@ struct ExploreView: View {
 }
 
 #Preview {
-    ExploreView()
+    NavigationView {
+        ExploreView()
+    }
 }
+
+        

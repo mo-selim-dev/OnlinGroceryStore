@@ -17,7 +17,10 @@ struct LoginView: View {
             backgroundImage()
             
             // Back Button
-            backButton(action: dismiss)
+//            backButton(action: dismiss)
+            CustomAppBar(
+                leftIcon: "back", leftAction: { dismiss() }
+                          )
             
             // Main Content
             VStack(spacing: 20) {

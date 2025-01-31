@@ -9,10 +9,10 @@ import SwiftUI
 
 struct ExploreItemsView: View {
     @Environment(\.dismiss) var dismiss
-    @StateObject var itemsVM = ExploreViewModel.shared
+    @StateObject var itemsVM = ExploreItemViewModel(catObj: ExploreCategoryModel(dict: [:]))
     @State var txtSearch: String = ""
     
-    var colums =  [
+    var columns =  [
         GridItem(.flexible(), spacing: 15),
         GridItem(.flexible(), spacing: 15)
     ]
@@ -22,27 +22,42 @@ struct ExploreItemsView: View {
         ZStack{
             
             VStack {
-
                 CustomAppBar(
-                    leftIcon: Image("back"),
-                    leftAction: { print("Left icon tapped") },
-                    leftIconSize: 15,
-                    leftIconColor: .black,
+//                    colorAppBar: .white,
                     
-                    rightIcon: Image(systemName: "gear"),
-                    rightAction: { print("Right icon tapped") },
-                    rightIconSize: 30,
-                    rightIconColor: .blue,
+                    leftIcon: "back",
+                    leftAction: {
+                        print("Left icon tapped")
+                    },
+                    leftIconSize: 25,
+                    rightIcon: "filter_ic",
+                    rightAction: {
+                        print("Right icon tapped")
+                    },
+                    rightIconSize: 25,
+
                     
-                    title: "My App",
+                    title: "Frash Fruits & Vegetable",
                     textAlignment: .center,
-                    font: .system(size: 26, weight: .semibold),
-                    colorAppBar: .white,
-                    titleColor: .green
+//                    font: .system(size: 20, weight: .bold),
+                    font: .customfont(.bold, fontSize: 20)
+                    
                 )
                 
-                Spacer()
-                
+                ScrollView{
+                    LazyVGrid(columns: columns,  spacing:15) {
+                         
+                        ForEach(itemsVM.listArr, id: \.id) {
+                            pObj in
+                            ProductCell( pObj: pObj ){
+                                
+                            }
+                        }
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                    .padding(.bottom, .bottomInsets + 60)
+                }
             }
    
         }
@@ -51,5 +66,10 @@ struct ExploreItemsView: View {
 }
 
 #Preview {
-    ExploreItemsView()
+    ExploreItemsView(itemsVM: ExploreItemViewModel(catObj: ExploreCategoryModel(dict: [
+        "cat_id": 1,
+        "cat_name": "Frash Fruits & Vegetable",
+        "image": "http://192.168.1.3:3001/img/category/20230726155407547qM5gSxkrCh.png",
+        "color": "53B175"
+    ])))
 }

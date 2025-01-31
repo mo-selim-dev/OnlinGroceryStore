@@ -22,54 +22,54 @@ extension View {
             .frame(width: .screenWidth, height: .screenHeight)
     }
     
-    // MARK: Back Button
-    /// Returns a back button for authentication screens.
-    /// - Parameters:
-    ///   - iconName: The name of the icon to be used for the back button. Default is "back".
-    ///   - iconSize: The size of the icon. Default is 25x25.
-    ///   - action: The `DismissAction` to handle the back button tap.
-    func backButton(
-        iconName: String = "back",
-        iconSize: CGSize = CGSize(width: 25, height: 25),
-        action: DismissAction
-    ) -> some View {
-        VStack {
-            HStack {
-                Button {
-                    action()
-                } label: {
-                    Image(iconName)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: iconSize.width, height: iconSize.height)
-                }
-                Spacer()
-            }
-            Spacer()
-        }
-        .padding(.top, .topInsets)
-        .padding(.horizontal, 20)
-    }
-    
-    // MARK: Share Button
-    func shareButton(action: @escaping () -> Void) -> some View {
-        VStack {
-            HStack {
-                Spacer()
-                Button {
-                    action()
-                } label: {
-                    Image("share")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 25, height: 25)
-                }
-            }
-            Spacer()
-        }
-        .padding(.top, .topInsets)
-        .padding(.horizontal, 20)
-    }
+//    // MARK: Back Button
+//    /// Returns a back button for authentication screens.
+//    /// - Parameters:
+//    ///   - iconName: The name of the icon to be used for the back button. Default is "back".
+//    ///   - iconSize: The size of the icon. Default is 25x25.
+//    ///   - action: The `DismissAction` to handle the back button tap.
+//    func backButton(
+//        iconName: String = "back",
+//        iconSize: CGSize = CGSize(width: 25, height: 25),
+//        action: DismissAction
+//    ) -> some View {
+//        VStack {
+//            HStack {
+//                Button {
+//                    action()
+//                } label: {
+//                    Image(iconName)
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: iconSize.width, height: iconSize.height)
+//                }
+//                Spacer()
+//            }
+//            Spacer()
+//        }
+//        .padding(.top, .topInsets)
+//        .padding(.horizontal, 20)
+//    }
+//    
+//    // MARK: Share Button
+//    func shareButton(action: @escaping () -> Void) -> some View {
+//        VStack {
+//            HStack {
+//                Spacer()
+//                Button {
+//                    action()
+//                } label: {
+//                    Image("share")
+//                        .resizable()
+//                        .scaledToFit()
+//                        .frame(width: 25, height: 25)
+//                }
+//            }
+//            Spacer()
+//        }
+//        .padding(.top, .topInsets)
+//        .padding(.horizontal, 20)
+//    }
     
     
     // MARK: Logo Image
