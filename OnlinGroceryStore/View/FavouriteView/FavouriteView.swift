@@ -61,7 +61,7 @@ struct FavouriteView: View {
             
         }
         .onAppear{
-//            favVM.serviceCallFavourite()
+            favVM.serviceCallList()
         }
         .ignoresSafeArea()
     }

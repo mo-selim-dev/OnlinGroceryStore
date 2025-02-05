@@ -52,8 +52,6 @@ struct FavouriteRow: View {
     }
 }
 
-struct FavouriteRow_Previews: PreviewProvider {
-    static var previews: some View {
-        FavouriteRow()
-    }
+#Preview {
+    FavouriteRow()
 }

@@ -99,12 +99,9 @@ struct MyCartView: View {
         .ignoresSafeArea()
     }
 }
-
-struct MyCartView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MyCartView()
-        }
-        
+#Preview {
+    NavigationView {
+        MyCartView()
     }
 }
+

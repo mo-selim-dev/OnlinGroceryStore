@@ -1,3 +1,11 @@
+//
+//  AddressModel.swift
+//  OnlinGroceryStore
+//
+//  Created by Mohamed Selim on 05/02/2025.
+//
+
+
 import SwiftUI
 
 struct AddressModel: Identifiable, Equatable {
