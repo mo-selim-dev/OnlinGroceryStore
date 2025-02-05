@@ -21,7 +21,7 @@ class ProductDetailViewModel: ObservableObject
     @Published var isFav: Bool = false
     @Published var isShowDetails: Bool = false
     @Published var isShowNutrition: Bool = false
-    @Published var quantity: Int = 1
+    @Published var qty: Int = 1
 
     func showDetails(){
         isShowDetails.toggle()
@@ -31,14 +31,14 @@ class ProductDetailViewModel: ObservableObject
         isShowNutrition.toggle()
     }
     
-    func updateQuantity(isIncrement: Bool = true) {
+    func updateQty(isIncrement: Bool = true) {
         if(isIncrement){
-            quantity += 1
-            if quantity > 99 {
-                quantity = 99
+            qty += 1
+            if qty > 99 {
+                qty = 99
             }
         }else{
-            quantity -= 1
+            qty -= 1
         }
     }
     
@@ -87,31 +87,6 @@ class ProductDetailViewModel: ObservableObject
     }
 
     
+
+
 }
-
-
-//// MARK: - serviceCallAddRemoveFav
-//
-//func serviceCallAddRemoveFav(){
-//    ServiceCall.post(parameter: ["prod_id": self.pObj.prodId ], path: Globs.SV_ADD_REMOVE_FAVORITE, isToken: true ) { responseObj in
-//        if let response = responseObj as? NSDictionary {
-//            if response.value(forKey: KKey.status) as? String ?? "" == "1" {
-//                
-//                self.isFav = !self.isFav
-//                HomeViewModel.shared.serviceCallList()
-//                
-//                self.errorMessage = response.value(forKey: KKey.message) as? String ?? "Done"
-//                self.showError = true
-//            }else{
-//                self.errorMessage = response.value(forKey: KKey.message) as? String ?? "Fail"
-//                self.showError = true
-//            }
-//        }
-//    } failure: { error in
-//        self.errorMessage = error?.localizedDescription ?? "Fail"
-//        self.showError = true
-//    }
-//}
-//
-//
-//}

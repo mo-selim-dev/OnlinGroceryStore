@@ -20,10 +20,12 @@ class ExploreItemViewModel: ObservableObject
 
     init(catObj: ExploreCategoryModel) {
         self.cObj = catObj
+        
         serviceCallList()
     }
 
-        
+    //MARK: ServiceCall
+
     func serviceCallList(){
         ServiceCall.post(parameter: ["cat_id": self.cObj.id], path: Globs.Endpoints.exploreCategoryItemsList, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
@@ -49,3 +51,4 @@ class ExploreItemViewModel: ObservableObject
 
     
 }
+

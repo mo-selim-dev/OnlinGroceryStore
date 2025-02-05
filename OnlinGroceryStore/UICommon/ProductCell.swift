@@ -9,21 +9,9 @@ import SwiftUI
 import SDWebImageSwiftUI
 
 struct ProductCell: View {
-    @State var pObj: ProductModel = ProductModel(dict: ["prod_id": 6,
-                                                        "cat_id": 1,
-                                                        "brand_id": 1,
-                                                        "type_id": 1,
-                                                        "name": "Red Apple",
-                                                        "detail": "Apples contain key nutrients, including fiber and antioxidants. They may offer health benefits, including lowering blood sugar levels and benefitting heart health.",
-                                                        "unit_name": "kg",
-                                                        "unit_value": "1",
-                                                        "nutrition_weight": "182g",
-                                                        "price": 1.99,
-                                                        "image": "http://localhost:3001/img/product/202307310951365136W6nJvPCdzQ.png",
-                                                        "cat_name": "Frash Fruits & Vegetable",
-                                                        "type_name": "Pulses",
-                                                        "is_fav": 0,
-                                                        "avg_rating": 0])
+
+    @State var pObj: ProductModel = ProductModel(dict: [:])
+    @State var width: Double = 180.0
     var didAddCart: ( ()->() )?
     
     var body: some View {
@@ -37,11 +25,7 @@ struct ProductCell: View {
                     .transition(.fade(duration:0.5))
                     .scaledToFit()
                     .frame(width: 100, height: 80)
-                
-                //            Image("banana")
-                //                .resizable()
-                //                .scaledToFit()
-                //                .frame(width: 100, height: 80)
+
                 Spacer()
                 
                 Text(pObj.name)
@@ -80,7 +64,7 @@ struct ProductCell: View {
                 
             }
             .padding(15)
-            .frame(width: 200, height: 230)
+            .frame(width: width, height: 230)
             .overlay (
                 RoundedRectangle(cornerRadius: 16)
                     .stroke(Color.placeholder.opacity(0.5), lineWidth: 1)
@@ -91,5 +75,21 @@ struct ProductCell: View {
 }
 
 #Preview {
-    ProductCell()
+    ProductCell(pObj: ProductModel(dict: ["prod_id": 6,
+                                          "cat_id": 1,
+                                          "brand_id": 1,
+                                          "type_id": 1,
+                                          "name": "Red Apple",
+                                          "detail": "Apples contain key nutrients, including fiber and antioxidants. They may offer health benefits, including lowering blood sugar levels and benefitting heart health.",
+                                          "unit_name": "kg",
+                                          "unit_value": "1",
+                                          "nutrition_weight": "182g",
+                                          "price": 1.99,
+                                          "image": "http://localhost:3001/img/product/202307310951365136W6nJvPCdzQ.png",
+                                          "cat_name": "Frash Fruits & Vegetable",
+                                          "type_name": "Pulses",
+                                          "is_fav": 0,
+                                          "avg_rating": 0])) {
+        
+    }
 }

@@ -29,7 +29,7 @@ class HomeViewModel: ObservableObject
     }
 
     
-        // MARK: - HomeView
+    // MARK: - serviceCallList
 
     func serviceCallList(){
         ServiceCall.post(parameter: [:], path: Globs.Endpoints.home, isToken: true ) { responseObj in

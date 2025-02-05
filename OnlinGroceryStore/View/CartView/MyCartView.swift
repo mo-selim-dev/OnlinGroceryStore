@@ -1,3 +1,11 @@
+//
+//  MyCartView.swift
+//  OnlinGroceryStore
+//
+//  Created by Mohamed Selim on 04/02/2025.
+//
+
+
 import SwiftUI
 
 struct MyCartView: View {
@@ -77,32 +85,17 @@ struct MyCartView: View {
                     
                     
                 }
-                
             }
-            if(cartVM.showCheckout) {
-                Color.black
-                    .opacity(0.3)
-                    .ignoresSafeArea()
-                    .onTapGesture {
-                        withAnimation {
-                            cartVM.showCheckout = false
-                        }
-                    }
-                
-                CheckoutView(isShow: $cartVM.showCheckout )
-                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+            
+            .onAppear{
+                cartVM.serviceCallList()
             }
-        }
-        .onAppear{
-            cartVM.serviceCallList()
-        }
-        .background( NavigationLink(destination: OrderAccpetView(), isActive: $cartVM.showOrderAccept  , label: {
-            EmptyView()
-        }) )
+            
+        } // end top ZStack
         .alert(isPresented: $cartVM.showError, content: {
-            Alert(title: Text(Globs.AppName), message: Text(cartVM.errorMessage), dismissButton: .default(Text("OK")) )
+            Alert(title: Text(Globs.appName), message: Text(cartVM.errorMessage), dismissButton: .default(Text("OK")) )
         })
-        .animation(.easeInOut, value: cartVM.showCheckout)
+//                .animation(.easeInOut, value: cartVM.showCheckout)
         .ignoresSafeArea()
     }
 }

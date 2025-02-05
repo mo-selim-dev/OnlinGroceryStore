@@ -21,11 +21,11 @@ struct MainTabView: View {
                 }else if(homeVM.selectTab == 1){
                     ExploreView()
                 }else if(homeVM.selectTab == 2){
-                    HomeView()
+                    MyCartView()
                 }else if(homeVM.selectTab == 3){
                     FavouriteView()
                 }else if(homeVM.selectTab == 4){
-                    ExploreView()
+                    AccountView()
                 }
             
                 
@@ -112,5 +112,8 @@ struct MainTabView: View {
 }
 
 #Preview {
-    MainTabView()
+    NavigationView{
+        MainTabView()
+
+    }
 }

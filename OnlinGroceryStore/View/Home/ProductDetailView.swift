@@ -69,7 +69,7 @@ struct ProductDetailView: View {
                             
                             Button {
                                 //                        detailVM.addSubQTY(isAdd: false)
-                                detailVM.updateQuantity(isIncrement: false)
+                                detailVM.updateQty(isIncrement: false)
                                 
                             } label: {
                                 
@@ -80,7 +80,7 @@ struct ProductDetailView: View {
                                     .padding(10)
                             }
                             
-                            Text( "\(detailVM.quantity)" )
+                            Text( "\(detailVM.qty)" )
                                 .font(.customfont(.bold, fontSize: 24))
                                 .foregroundColor(.primaryText)
                                 .multilineTextAlignment(.center)
@@ -91,7 +91,7 @@ struct ProductDetailView: View {
                                 )
                             
                             Button {
-                                detailVM.updateQuantity(isIncrement: true)
+                                detailVM.updateQty(isIncrement: true)
                             } label: {
                                 
                                 Image( "add_green"  )
@@ -102,7 +102,7 @@ struct ProductDetailView: View {
                             }
                             
                             Spacer()
-                            Text( "$\(  (detailVM.pObj.offerPrice ?? detailVM.pObj.price) * Double(detailVM.quantity) , specifier: "%.2f")"  )
+                            Text( "$\(  (detailVM.pObj.offerPrice ?? detailVM.pObj.price) * Double(detailVM.qty) , specifier: "%.2f")"  )
                                 .font(.customfont(.bold, fontSize: 28))
                                 .foregroundColor(.primaryText)
                             
@@ -244,23 +244,19 @@ struct ProductDetailView: View {
                     
                     
                     RoundButton(title: "Add To Basket") {
-                        
+                        CartViewModel.serviceCallAddToCart(prodId: detailVM.pObj.prodId, qty: detailVM.qty) { isDone, msg  in
+                            
+                            detailVM.qty = 1
+                            
+                            self.detailVM.errorMessage = msg
+                            self.detailVM.showError = true
+                        }
                     }
-                    .padding(20)
-                    
-                    //            RoundButton(title: "Add To Basket") {
-                    //                CartViewModel.serviceCallAddToCart(prodId: detailVM.pObj.prodId, qty: detailVM.qty) { isDone, msg  in
-                    //
-                    //                    detailVM.qty = 1
-                    //
-                    //                    self.detailVM.errorMessage = msg
-                    //                    self.detailVM.showError = true
-                    //                }
-                    //            }
-                    //            .padding( 20)
+                    .padding( 20)
                     
                 }
                 
+            
                 //        backButton(action: dismiss)
                 //        shareButton {
                 //        }

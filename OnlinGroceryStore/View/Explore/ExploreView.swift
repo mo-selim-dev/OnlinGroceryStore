@@ -1,9 +1,10 @@
-//
-//  ExploreView.swift
-//  OnlinGroceryStore
-//
-//  Created by Mohamed Selim on 23/01/2025.
-//
+////
+////  ExploreView.swift
+////  OnlinGroceryStore
+////
+////  Created by Mohamed Selim on 23/01/2025.
+////
+
 
 
 import SwiftUI
@@ -39,7 +40,7 @@ struct ExploreView: View {
                     .padding(.bottom, 4)
                 
                 ScrollView {
-                    LazyVGrid(columns: colums, spacing: 20) {
+                    LazyVGrid(columns: colums, spacing: 15) {
                         ForEach(explorVM.listArr, id: \.id) {
                             cObj in
                             

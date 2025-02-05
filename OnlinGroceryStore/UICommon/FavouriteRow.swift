@@ -39,7 +39,7 @@ struct FavouriteRow: View {
                 Text("$\(fObj.offerPrice ?? fObj.price, specifier: "%.2f" )")
                     .font(.customfont(.semibold, fontSize: 18))
                     .foregroundColor(.primaryText)
-                    
+                
                 Image("next")
                     .resizable()
                     .scaledToFit()

@@ -36,17 +36,17 @@ struct Globs {
         static let exploreCategoryList = baseURL + "explore_category_list"
         static let exploreCategoryItemsList = baseURL + "explore_category_items_list"
         
-//        // MARK: - Cart
-//        static let addToCart = baseURL + "add_to_cart"
-//        static let updateCart = baseURL + "update_cart"
-//        static let removeFromCart = baseURL + "remove_cart"
-//        static let cartList = baseURL + "cart_list"
-//        
-//        // MARK: - Orders
-//        static let placeOrder = baseURL + "order_place"
-//        static let myOrdersList = baseURL + "my_order"
-//        static let myOrdersDetail = baseURL + "my_order_detail"
-//        
+        // MARK: - Cart
+        static let addToCart = baseURL + "add_to_cart"
+        static let updateCart = baseURL + "update_cart"
+        static let removeFromCart = baseURL + "remove_cart"
+        static let cartList = baseURL + "cart_list"
+        
+        // MARK: - Orders
+        static let placeOrder = baseURL + "order_place"
+        static let myOrdersList = baseURL + "my_order"
+        static let myOrdersDetail = baseURL + "my_order_detail"
+        
 //        // MARK: - Addresses
 //        static let addAddress = baseURL + "add_delivery_address"
 //        static let updateAddress = baseURL + "update_delivery_address"

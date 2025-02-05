@@ -27,8 +27,7 @@ struct CustomAppBar: View {
     
     var body: some View {
         ZStack(alignment: .top) {
-            
-            HStack {
+               HStack {
                 // Left icon or button
                 if let leftIcon = leftIcon {
                     Button(action: {
@@ -90,8 +89,8 @@ struct CustomAppBar: View {
                 } else {
                     Spacer().frame(width: rightIconSize)
                 }
-            }
-            .frame(height: 45)
+        }
+//               .frame(height: .topInsets)
             .padding(.top, .topInsets) // Adjust based on safe area
             .foregroundColor(titleColor)
             .background(colorAppBar)
@@ -100,7 +99,6 @@ struct CustomAppBar: View {
         .ignoresSafeArea(edges: .top) // Ensure it extends to the top edge
     }
 }
-
 
 
 
