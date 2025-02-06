@@ -37,3 +37,8 @@ struct AccountRow: View {
         }
     }
 }
+
+
+#Preview {
+    AccountRow()
+}

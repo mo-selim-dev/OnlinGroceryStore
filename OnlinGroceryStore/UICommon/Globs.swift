@@ -47,24 +47,24 @@ struct Globs {
         static let myOrdersList = baseURL + "my_order"
         static let myOrdersDetail = baseURL + "my_order_detail"
         
-//        // MARK: - Addresses
-//        static let addAddress = baseURL + "add_delivery_address"
-//        static let updateAddress = baseURL + "update_delivery_address"
-//        static let removeAddress = baseURL + "delete_delivery_address"
-//        static let addressList = baseURL + "delivery_address"
-//        
+        // MARK: - Addresses
+        static let addAddress = baseURL + "add_delivery_address"
+        static let updateAddress = baseURL + "update_delivery_address"
+        static let removeAddress = baseURL + "delete_delivery_address"
+        static let addressList = baseURL + "delivery_address"
+        
+        // MARK: - Promo Codes
+        static let promoCodeList = baseURL + "promo_code_list"
+        
 //        // MARK: - Payment
 //        static let addPaymentMethod = baseURL + "add_payment_method"
 //        static let removePaymentMethod = baseURL + "remove_payment_method"
 //        static let paymentMethodList = baseURL + "payment_method"
-//        
-//        // MARK: - Promo Codes
-//        static let promoCodeList = baseURL + "promo_code_list"
-//        
+//
 //        // MARK: - Explore
 //        static let exploreCategories = baseURL + "explore_category_list"
-//        static let exploreItemsList = baseURL + "explore_category_items_list"
-//        
+//        static let exploreItemsList = baseURL +       "explore_category_items_list"
+//
 //        // MARK: - Notifications
 //        static let notificationList = baseURL + "notification_list"
 //        static let readAllNotifications = baseURL + "notification_read_all"

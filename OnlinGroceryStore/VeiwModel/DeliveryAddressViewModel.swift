@@ -54,23 +54,96 @@ class DeliveryAddressViewModel: ObservableObject
     
     
     
+    
     //MARK: ServiceCall
     
     func serviceCallList(){
-        
+        ServiceCall.post(parameter: [:], path: Globs.Endpoints.addAddress, isToken: true ) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
+                    
+                    self.listArr = (response.value(forKey: ResponseKeys.payload) as? NSArray ?? []).map({ obj in
+                        return AddressModel(dict: obj as? NSDictionary ?? [:])
+                    })
+                
+                }else{
+
+                    self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Fail"
+                    self.showError = true
+                }
+            }
+        } failure: { error in
+            self.errorMessage = error?.localizedDescription ?? "Fail"
+            self.showError = true
+        }
     }
     
-    func serviceCallRemove(cObj: AddressModel){
-        
-    }
+    
     
     func serviceCallUpdateAddress( aObj: AddressModel?, didDone: (( )->())? ) {
+        ServiceCall.post(parameter: ["address_id":  aObj?.id ?? "", "name":  txtName, "type_name": txtTypeName, "phone": txtMobile, "address": txtAddress, "city": txtCity, "state": txtState, "postal_code": txtPostalCode ], path: Globs.Endpoints.updateAddress, isToken: true ) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
+                    self.clearAll()
+                    self.serviceCallList()
+                    didDone?()
+                }else{
+                    self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Fail"
+                    self.showError = true
+                }
+            }
+        } failure: { error in
+            self.errorMessage = error?.localizedDescription ?? "Fail"
+            self.showError = true
+        }
 
     }
     
-    func serviceCallAddAddress(didDone: ((  )->())? ) {
-        
+    
+    
+    func serviceCallRemove(aObj: AddressModel){
+        ServiceCall.post(parameter: ["address_id": aObj.id], path: Globs.Endpoints.removeAddress, isToken: true ) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
+
+                    self.serviceCallList()
+                
+                }else{
+                    self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Fail"
+                    self.showError = true
+                }
+            }
+        } failure: { error in
+            self.errorMessage = error?.localizedDescription ?? "Fail"
+            self.showError = true
+        }
+    }
+    
+ 
+    
+    func serviceCallAddAddress(didDone: (()->())? ) {
+        ServiceCall.post(parameter: ["name":  txtName, "type_name": txtTypeName, "phone": txtMobile, "address": txtAddress, "city": txtCity, "state": txtState, "postal_code": txtPostalCode  ], path: Globs.Endpoints.addAddress, isToken: true ) { responseObj in
+            if let response = responseObj as? NSDictionary {
+                if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
+                    self.clearAll()
+                    self.serviceCallList()
+                    didDone?( )
+                }else{
+                    self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Fail"
+                    self.showError = true
+                }
+            }
+        } failure: { error in
+            self.errorMessage = error?.localizedDescription ?? "Fail"
+            self.showError = true
+        }
+
     }
     
     
+    
 }
+
+
+
+

@@ -23,7 +23,7 @@ class FavouriteViewModel: ObservableObject
     }
 
     
-        // MARK: - HomeView
+        // MARK: - serviceCallList
 
     func serviceCallList(){
         ServiceCall.post(parameter: [:], path: Globs.Endpoints.favoriteList, isToken: true ) { responseObj in

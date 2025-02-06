@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct AddAndUpdateDeliveryAddressView: View {
-    @Environment(\.presentationMode) var mode : Binding<PresentationMode>
+    @Environment(\.dismiss) var dismiss
     @StateObject var addressVM = DeliveryAddressViewModel.shared
     @State var isEdit: Bool = false
     @State var editObj: AddressModel?
@@ -66,11 +66,11 @@ struct AddAndUpdateDeliveryAddressView: View {
                     RoundButton(title: isEdit ? "Update Address" : "Add Address") {
                         if(isEdit) {
                             addressVM.serviceCallUpdateAddress(aObj: editObj) {
-                                self.mode.wrappedValue.dismiss()
+                                dismiss()
                             }
                         }else{
                             addressVM.serviceCallAddAddress {
-                                self.mode.wrappedValue.dismiss()
+                               dismiss()
                             }
                         }
                     }
@@ -86,7 +86,7 @@ struct AddAndUpdateDeliveryAddressView: View {
                 HStack{
                     
                     Button {
-                        mode.wrappedValue.dismiss()
+                        dismiss()
                     } label: {
                         Image("back")
                             .resizable()
@@ -123,7 +123,7 @@ struct AddAndUpdateDeliveryAddressView: View {
             }
         }
         .alert(isPresented: $addressVM.showError) {
-            Alert(title: Text(Globs.AppName), message: Text(addressVM.errorMessage), dismissButton: .default(Text("Ok")))
+            Alert(title: Text(Globs.appName), message: Text(addressVM.errorMessage), dismissButton: .default(Text("Ok")))
         }
         .navigationTitle("")
         .navigationBarHidden(true)

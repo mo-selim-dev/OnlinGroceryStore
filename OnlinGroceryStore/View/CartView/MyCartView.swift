@@ -44,6 +44,7 @@ struct MyCartView: View {
                     Text("My Cart")
                         .font(.customfont(.bold, fontSize: 20))
                         .frame(height: 46)
+                    
                     Spacer()
                     
                 }
@@ -55,7 +56,7 @@ struct MyCartView: View {
                 
                 if(cartVM.listArr.count > 0) {
                     Button {
-                        cartVM.showCheckout = true
+                        
                     } label: {
                         ZStack {
                             Text("Check Out")
@@ -82,14 +83,9 @@ struct MyCartView: View {
                     .cornerRadius(20)
                     .padding(.horizontal, 20)
                     .padding(.bottom, .bottomInsets + 80)
-                    
-                    
                 }
             }
-            
-            .onAppear{
-                cartVM.serviceCallList()
-            }
+            .onAppear{ cartVM.serviceCallList() }
             
         } // end top ZStack
         .alert(isPresented: $cartVM.showError, content: {
