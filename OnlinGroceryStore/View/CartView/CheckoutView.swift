@@ -235,61 +235,7 @@ struct CheckoutView: View {
                     Spacer()
                     
                     
-                    
-                    Text("$\(cartVM.userPayAmount)")
-                        .font(.customfont(.semibold, fontSize: 18))
-                        .foregroundColor(.primaryText)
-                        .frame(height: 46)
-                    
-                    Image("next")
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 20, height: 20)
-                        .foregroundColor(.primaryText)
-                    
-                }
-                Divider()
-                
-                VStack {
-                    Text("By continuing you agree to our")
-                        .font(.customfont(.semibold, fontSize: 14))
-                        .foregroundColor(.secondaryText)
-                        .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                    
-                    HStack{
-                        
-                        Text("Terms of Service")
-                            .font(.customfont(.semibold, fontSize: 14))
-                            .foregroundColor(.primaryText)
-                        
-                        
-                        Text(" and ")
-                            .font(.customfont(.semibold, fontSize: 14))
-                            .foregroundColor(.secondaryText)
-                        
-                        
-                        Text("Privacy Policy.")
-                            .font(.customfont(.semibold, fontSize: 14))
-                            .foregroundColor(.primaryText)
-                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-                        
-                    }
-                    
-                }
-                .padding(.vertical, .screenWidth * 0.03)
-                
-                RoundButton(title: "Place Order") {
-                    cartVM.serviceCallOrderPlace()
-                }
-                .padding(.bottom, .bottomInsets + 70)
-            }
-            .padding(.horizontal, 20)
-            .background(Color.white)
-            .cornerRadius(20, corner: [.topLeft, .topRight])
-        }
-    }
-}
-
+ 
 struct CheckoutView_Previews: PreviewProvider {
     @State static var isShow: Bool = false;
     static var previews: some View {
