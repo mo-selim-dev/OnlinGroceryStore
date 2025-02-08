@@ -56,7 +56,7 @@ struct MyCartView: View {
                 
                 if(cartVM.listArr.count > 0) {
                     Button {
-                        
+                        cartVM.showCheckout = true
                     } label: {
                         ZStack {
                             Text("Check Out")
@@ -87,11 +87,29 @@ struct MyCartView: View {
             }
             .onAppear{ cartVM.serviceCallList() }
             
+//            .sheet(isPresented: $cartVM.showCheckout) {
+//                CheckoutView()
+//                    .presentationDetents([.height(.screenWidth * 1.3), .medium])
+//            }
+
+            if (cartVM.showCheckout){
+                Color.black
+                    .opacity(0.3)
+                    .ignoresSafeArea()
+                    .onTapGesture {
+                        withAnimation {
+                            cartVM.showCheckout = false
+                        }
+                    }
+                CheckoutView(isShow: $cartVM.showCheckout)
+                    .transition(.opacity.combined(with: .move(edge: .bottom)))
+            }
+            
         } // end top ZStack
         .alert(isPresented: $cartVM.showError, content: {
             Alert(title: Text(Globs.appName), message: Text(cartVM.errorMessage), dismissButton: .default(Text("OK")) )
         })
-//                .animation(.easeInOut, value: cartVM.showCheckout)
+        .animation(.easeInOut, value: cartVM.showCheckout)
         .ignoresSafeArea()
     }
 }

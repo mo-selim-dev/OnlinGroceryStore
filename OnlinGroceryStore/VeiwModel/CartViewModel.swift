@@ -19,6 +19,8 @@ class CartViewModel: ObservableObject
     @Published var listArr: [CartItemModel] = []
     @Published var total: String = "0.0"
     
+    @Published var showCheckout: Bool = false
+    
 //    @Published var showCheckout: Bool = false
 //    
 //    @Published var showPickerAddress: Bool = false
