@@ -79,7 +79,7 @@ struct AccountView: View {
                             }
 
                             NavigationLink {
-//                                PromoCodeView()
+                                PromoCodeView()
                             } label: {
                                 AccountRow(title: "Promo Code", icon: "a_promocode")
                             }
