@@ -66,7 +66,7 @@ struct MyCartView: View {
                             
                             HStack {
                                 Spacer()
-                                Text("$\(cartVM.total)")
+                                Text("$\(cartVM.totalProductsCost)")
                                     .font(.customfont(.semibold, fontSize: 12))
                                     .foregroundColor(.white)
                                     .padding(.horizontal, 8)

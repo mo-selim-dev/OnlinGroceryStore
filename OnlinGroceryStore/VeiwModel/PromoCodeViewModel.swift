@@ -26,7 +26,7 @@ class PromoCodeViewModel: ObservableObject
     //MARK: ServiceCall
     
     func serviceCallList(){
-        ServiceCall.post(parameter: [:], path: Globs.Endpoints.addAddress, isToken: true ) { responseObj in
+        ServiceCall.post(parameter: [:], path: Globs.Endpoints.promoCodeList, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
                     

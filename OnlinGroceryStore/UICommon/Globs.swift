@@ -56,10 +56,10 @@ struct Globs {
         // MARK: - Promo Codes
         static let promoCodeList = baseURL + "promo_code_list"
         
-//        // MARK: - Payment
-//        static let addPaymentMethod = baseURL + "add_payment_method"
-//        static let removePaymentMethod = baseURL + "remove_payment_method"
-//        static let paymentMethodList = baseURL + "payment_method"
+        // MARK: - Payment
+        static let addPaymentMethod = baseURL + "add_payment_method"
+        static let removePaymentMethod = baseURL + "remove_payment_method"
+        static let paymentMethodList = baseURL + "payment_method"
 //
 //        // MARK: - Explore
 //        static let exploreCategories = baseURL + "explore_category_list"

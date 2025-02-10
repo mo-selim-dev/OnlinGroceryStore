@@ -60,6 +60,7 @@ struct PaymentMethodsView: View {
                         .background(Color.white)
                         .cornerRadius(5)
                         .shadow(color: Color.black.opacity(0.15), radius: 2)
+                        
                         .onTapGesture {
                             if(isPicker) {
                                 mode.wrappedValue.dismiss()

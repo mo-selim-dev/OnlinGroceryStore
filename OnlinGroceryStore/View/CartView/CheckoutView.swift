@@ -9,11 +9,10 @@
 import SwiftUI
 
 struct CheckoutView: View {
-    @Binding var isShow: Bool 
-    @State var delivaryType: Int = 1
-    @State var paymentType: Int = 1
+    @Binding var isShow: Bool
+    @StateObject var cartVM = CartViewModel.shared
     var body: some View {
-
+        
         VStack {
             
             Spacer()
@@ -36,7 +35,6 @@ struct CheckoutView: View {
                     
                 }
                 .padding(.top, 30)
-                //                .padding()
                 
                 Divider()
                 
@@ -49,48 +47,45 @@ struct CheckoutView: View {
                     
                     Spacer()
                     
-                    Picker("", selection: $delivaryType) {
+                    Picker("", selection: $cartVM.deliveryType) {
                         Text("Delivary").tag(1)
                         Text("Collection").tag(2)
                     }
                     .pickerStyle(.segmented)
                     .frame(width: 180)
                     
-                    
                 }
-                //                .padding()
                 
                 Divider()
                 
-                if (delivaryType == 1) {
-                    HStack{
-                        Text("Delivary")
-                            .font(.customfont(.semibold, fontSize: 18))
-                            .foregroundColor(.secondaryText)
-                            .frame(height: 46)
-                        
-                        
-                        Spacer()
-                        
-                        Text("Select Method ")
-                            .font(.customfont(.semibold, fontSize: 18))
-                            .foregroundColor(.primaryText)
-                            .frame(height: 46)
-                        
-                        
-                        
-                        Button {
- 
-                        }label: {
+                if (cartVM.deliveryType == 1) {
+                    NavigationLink{
+                        DelieryAddressView(isPicker: true) { aObj in
+                            cartVM.deliveryObj = aObj
+                        }
+                    } label: {
+                        HStack{
+                            Text("Delivary")
+                                .font(.customfont(.semibold, fontSize: 18))
+                                .foregroundColor(.secondaryText)
+                                .frame(height: 46)
+                            
+                            
+                            Spacer()
+                            
+                            Text(cartVM.deliveryObj?.name ?? "Select Method ")
+                                .font(.customfont(.semibold, fontSize: 18))
+                                .foregroundColor(.primaryText)
+                                .frame(height: 46)
+                            
                             Image("next")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 20, height: 20)
                                 .foregroundStyle(Color.primaryText)
                         }
-                        
                     }
-                    //                    .padding()
+                    
                     
                     Divider()
                 }
@@ -105,7 +100,7 @@ struct CheckoutView: View {
                     
                     Spacer()
                     
-                    Picker("Select Payment", selection: $paymentType) {
+                    Picker("Select Payment", selection: $cartVM.paymentType) {
                         Text("COD").tag(1)
                         Text("Online").tag(2)
                     }
@@ -113,69 +108,70 @@ struct CheckoutView: View {
                     .frame(width: 150)
                     
                 }
-                //                .padding()
                 Divider()
                 
-                if (paymentType == 1) {
-                    HStack{
-                        Text("Payment")
-                            .font(.customfont(.semibold, fontSize: 18))
-                            .foregroundColor(.secondaryText)
-                            .frame(height: 46)
-                        
-                        
-                        Spacer()
-                        
-                        Button {
-
-                        }label: {
+                if (cartVM.paymentType == 2) {
+                    NavigationLink{
+                        PaymentMethodsView(isPicker: true) { pObj in
+                            cartVM.paymentObj = pObj
+                        }
+                    } label: {
+                        HStack{
+                            Text("Payment")
+                                .font(.customfont(.semibold, fontSize: 18))
+                                .foregroundColor(.secondaryText)
+                                .frame(height: 46)
+                            
+                            Spacer()
+                            
                             Image("master")
                                 .resizable()
                                 .scaledToFit()
                                 .frame(width: 30, height: 20)
+                            
+                            Text(cartVM.paymentObj?.cardNumber ?? "Select")
+                                .font(.customfont(.semibold, fontSize: 18))
+                                .foregroundColor(.primaryText)
+                                .frame(height: 46)
+                            
+                            
+                            Image("next")
+                                .resizable()
+                                .scaledToFit()
+                                .foregroundColor(.primaryText)
+                                .frame(width: 20, height: 20)
                         }
-                        
-                        Text("Select")
-                            .font(.customfont(.semibold, fontSize: 18))
-                            .frame(height: 46)
-                        
-                        
-                        Image("next")
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 20, height: 20)
                     }
-                    //                    .padding()
                     
                     Divider()
                 }
                 
                 
-                HStack{
-                    Text("Promo Code")
-                        .font(.customfont(.semibold, fontSize: 18))
-                        .foregroundColor(.secondaryText)
-                        .frame(height: 46)
-                    
-                    Spacer()
-                    
-                    Text("Pick Discount")
-                        .font(.customfont(.semibold, fontSize: 18))
-                        .foregroundColor(.primaryText)
-                        .frame(height: 46)
-                    
-                    Button {
-
-                    }label: {
+                NavigationLink{
+                    PromoCodeView(isPicker: true) { pObj in
+                        cartVM.promoCodeObj = pObj
+                    }
+                }label: {
+                    HStack {
+                        Text("Promo Code")
+                            .font(.customfont(.semibold, fontSize: 18))
+                            .foregroundColor(.secondaryText)
+                            .frame(height: 46)
+                        
+                        Spacer()
+                        
+                        Text(cartVM.promoCodeObj?.code ?? "Pick Discount")
+                            .font(.customfont(.semibold, fontSize: 18))
+                            .foregroundColor(.primaryText)
+                            .frame(height: 46)
+                        
                         Image("next")
                             .resizable()
                             .scaledToFit()
                             .frame(width: 20, height: 20)
                             .foregroundStyle(Color.primaryText)
                     }
-                    
                 }
-                //                .padding()
                 
                 Divider()
                 
@@ -187,7 +183,7 @@ struct CheckoutView: View {
                             .foregroundColor(.secondaryText)
                         Spacer()
                         
-                        Text("$ 52.3")
+                        Text("$ \(cartVM.totalProductsCost)")
                             .font(.customfont(.semibold, fontSize: 16))
                             .foregroundColor(.secondaryText)
                     }
@@ -198,7 +194,7 @@ struct CheckoutView: View {
                             .foregroundColor(.secondaryText)
                         Spacer()
                         
-                        Text(" + $ 2.7")
+                        Text(" + $ \(cartVM.deliverCost)")
                             .font(.customfont(.semibold, fontSize: 16))
                             .foregroundColor(.secondaryText)
                     }
@@ -208,7 +204,7 @@ struct CheckoutView: View {
                             .font(.customfont(.semibold, fontSize: 16))
                             .foregroundColor(.secondaryText)
                         Spacer()
-                        Text("- $ 0.0")
+                        Text("- $ \(cartVM.discount)")
                             .font(.customfont(.semibold, fontSize: 16))
                             .foregroundColor(.red)
                         
@@ -218,20 +214,20 @@ struct CheckoutView: View {
                 .padding(.top, 15)
                 
                 HStack{
-                    Text("Final Total  ")
+                    Text("Final Total")
                         .font(.customfont(.semibold, fontSize: 18))
                         .foregroundColor(.secondaryText)
                         .frame(height: 46)
                     
                     Spacer()
                     
-                    Text("$55.0 ")
+                    Text("$ \(cartVM.finalTotalCost)")
                         .font(.customfont(.semibold, fontSize: 18))
                         .foregroundColor(.primaryText)
                         .frame(height: 46)
                     
                     Button {
-
+                        
                     }label: {
                         Image("next")
                             .resizable()
@@ -250,7 +246,7 @@ struct CheckoutView: View {
                         .font(.customfont(.semibold, fontSize: 14))
                         .foregroundColor(.secondaryText)
                         .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-
+                    
                     
                     HStack {
                         Text("Terms of Service")
@@ -263,7 +259,7 @@ struct CheckoutView: View {
                         Text("Privacy Policy.")
                             .font(.customfont(.semibold, fontSize: 14))
                             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-
+                        
                         
                         Spacer()
                     }
@@ -272,11 +268,10 @@ struct CheckoutView: View {
                 .padding(.vertical, .screenWidth * 0.03)
                 
                 RoundButton(title: "Place Order") {
-                    
+                    cartVM.serviceCallOrderPlace()
                 }
-                .padding(.bottom, .bottomInsets + 15)
+                .padding(.bottom, .bottomInsets + 70)
                 
- 
             }
             .padding(.horizontal, 20)
             . background(.white)
@@ -288,7 +283,10 @@ struct CheckoutView: View {
 
 #Preview {
     @State var isShow: Bool = false
-    CheckoutView(isShow: $isShow)
+    NavigationView{
+        CheckoutView(isShow: $isShow)
+        
+    }
 }
 
 

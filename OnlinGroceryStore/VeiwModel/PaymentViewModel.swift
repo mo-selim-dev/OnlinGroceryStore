@@ -38,11 +38,18 @@ class PaymentViewModel: ObservableObject
         
     }
     
+//    func setData(payObj: PaymentModel){
+//        txtName = payObj.name
+//        txtCardNumber = payObj.cardNumber
+//        txtCardYear = payObj.cardYear
+//        txtCardMonth = payObj.cardMonth
+//        
+//    }
     
     //MARK: ServiceCall
     
     func serviceCallList(){
-        ServiceCall.post(parameter: [:], path: Globs.Endpoints.addPaymentMethod, isToken: true ) { responseObj in
+        ServiceCall.post(parameter: [:], path: Globs.Endpoints.paymentMethodList, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
                     
@@ -63,7 +70,7 @@ class PaymentViewModel: ObservableObject
     }
     
     func serviceCallRemove(pObj: PaymentModel){
-        ServiceCall.post(parameter: ["pay_id": pObj.id ], path: Globs.Endpoints.addPaymentMethod, isToken: true ) { responseObj in
+        ServiceCall.post(parameter: ["pay_id": pObj.id ], path: Globs.Endpoints.removePaymentMethod, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
                     

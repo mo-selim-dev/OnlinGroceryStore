@@ -12,7 +12,7 @@ struct LoginView: View {
     @StateObject private var mainVM = MainViewModel.shared
     
     var body: some View {
-        ZStack {
+        ZStack(alignment: .top) {
             // Background Image
             backgroundImage()
             
@@ -21,7 +21,6 @@ struct LoginView: View {
             CustomAppBar(
                 leftIcon: "back", leftAction: { dismiss() }
                           )
-            
             // Main Content
             VStack(spacing: 20) {
                 // Logo
