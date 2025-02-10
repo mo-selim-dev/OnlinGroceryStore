@@ -8,11 +8,11 @@
 
 import SwiftUI
 
-struct AddAndUpdateDeliveryAddressView: View {
+struct AddDeliveryAddressView: View {
     @Environment(\.dismiss) var dismiss
     @StateObject var addressVM = DeliveryAddressViewModel.shared
     @State var isEdit: Bool = false
-    @State var editObj: AddressModel?
+    @State var editObj: DeliveryAddressModel?
     
     var body: some View {
         ZStack {
@@ -133,5 +133,5 @@ struct AddAndUpdateDeliveryAddressView: View {
 }
 
 #Preview {
-    AddAndUpdateDeliveryAddressView()
+    AddDeliveryAddressView()
 }
