@@ -17,7 +17,7 @@ class CartViewModel: ObservableObject
     @Published var errorMessage = ""
     
     @Published var listArr: [CartItemModel] = []
-    
+
     @Published var totalProductsCost: String = "0.0"
     @Published var deliverCost: String = ""
     @Published var discount: String = ""
@@ -42,6 +42,7 @@ class CartViewModel: ObservableObject
     init() {
         serviceCallList()
     }
+    
     
     
     //MARK: ServiceCall
@@ -76,7 +77,8 @@ class CartViewModel: ObservableObject
         }
     }
     
-    
+    //MARK: serviceCallUpdateQty
+
     func serviceCallUpdateQty(cObj: CartItemModel, newQty: Int ){
         ServiceCall.post(parameter: ["cart_id": cObj.cartId, "prod_id": cObj.prodId, "new_qty": newQty ], path: Globs.Endpoints.updateCart, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
@@ -96,7 +98,8 @@ class CartViewModel: ObservableObject
         }
     }
     
-    
+    //MARK: serviceCallRemove
+
     func serviceCallRemove(cObj: CartItemModel){
         ServiceCall.post(parameter: ["cart_id": cObj.cartId, "prod_id": cObj.prodId ], path: Globs.Endpoints.removeFromCart, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
@@ -117,7 +120,8 @@ class CartViewModel: ObservableObject
     
     
     
-    
+    //MARK: serviceCallAddToCart
+
     class func serviceCallAddToCart(prodId: Int, qty: Int, didDone: ((_ isDone: Bool, _ message: String )->())? ) {
         ServiceCall.post(parameter: ["prod_id":  prodId, "qty": qty], path: Globs.Endpoints.addToCart, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
@@ -133,7 +137,8 @@ class CartViewModel: ObservableObject
         
     }
     
-    
+    //MARK: serviceCallOrderPlace
+
     func serviceCallOrderPlace(){
         
         if(deliveryType == 1 && deliveryObj == nil ) {
@@ -152,7 +157,7 @@ class CartViewModel: ObservableObject
                                      "deliver_type": deliveryType,
                                      "payment_type": paymentType,
                                      "pay_id": paymentType == 1 ? "" : "\( paymentObj?.id ?? 0)",
-                                     "promo_code_id": deliveryObj?.id ?? ""  ], path: Globs.Endpoints.placeOrder, isToken: true ) { responseObj in
+                                     "promo_code_id": deliveryObj?.id ?? "" ], path: Globs.Endpoints.placeOrder, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
                     
@@ -170,6 +175,8 @@ class CartViewModel: ObservableObject
                 }else{
                     self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Fail"
                     self.showError = true
+                    print("ahhhhhhhhha")
+
                 }
             }
         } failure: { error in

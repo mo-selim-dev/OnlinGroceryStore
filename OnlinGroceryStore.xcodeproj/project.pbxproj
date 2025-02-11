@@ -73,6 +73,7 @@
 		0ABCCED42D49B924009B8430 /* ExploreItemViewModel .swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCCED32D49B924009B8430 /* ExploreItemViewModel .swift */; };
 		0ABCCED82D4B0212009B8430 /* CustomAppBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABCCED72D4B0212009B8430 /* CustomAppBar.swift */; };
 		0AD0C3962D58E2E80089B2BA /* PaymentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0C3952D58E2E80089B2BA /* PaymentModel.swift */; };
+		0AD0C3982D5BA3180089B2BA /* MyOrdersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0C3972D5BA3180089B2BA /* MyOrdersView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -142,6 +143,7 @@
 		0ABCCED32D49B924009B8430 /* ExploreItemViewModel .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreItemViewModel .swift"; sourceTree = "<group>"; };
 		0ABCCED72D4B0212009B8430 /* CustomAppBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAppBar.swift; sourceTree = "<group>"; };
 		0AD0C3952D58E2E80089B2BA /* PaymentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentModel.swift; sourceTree = "<group>"; };
+		0AD0C3972D5BA3180089B2BA /* MyOrdersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyOrdersView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -169,6 +171,7 @@
 		0A3204A42D5302DF005A2F6B /* Account */ = {
 			isa = PBXGroup;
 			children = (
+				0AD0C3972D5BA3180089B2BA /* MyOrdersView.swift */,
 				0AB0D8872D58DC1100835EB0 /* AddPaymentMethodView.swift */,
 				0AB0D8882D58DC1100835EB0 /* PaymentMethodsView.swift */,
 				0AB0D86D2D54A01300835EB0 /* PromoCodeView.swift */,
@@ -470,6 +473,7 @@
 				0A7EBB1B2D3713FD0070CCED /* LoginView.swift in Sources */,
 				0A88D1172D42A74D00628B19 /* TabButton.swift in Sources */,
 				0ABCCEC42D487431009B8430 /* FavouriteView.swift in Sources */,
+				0AD0C3982D5BA3180089B2BA /* MyOrdersView.swift in Sources */,
 				0ABCCED42D49B924009B8430 /* ExploreItemViewModel .swift in Sources */,
 				0A9A05432D45449B009F5AA8 /* Globs.swift in Sources */,
 				0AB0D86C2D549EDC00835EB0 /* PromoCodeModel.swift in Sources */,

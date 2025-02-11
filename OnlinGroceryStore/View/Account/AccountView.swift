@@ -51,7 +51,7 @@ struct AccountView: View {
                         VStack{
                             
                             NavigationLink {
-//                                MyOrdersView()
+                                MyOrdersView()
                             } label: {
                                 AccountRow(title: "My Orders", icon: "a_order")
                             }
@@ -139,3 +139,6 @@ struct AccountView: View {
         AccountView()
     }
 }
+
+
+

@@ -236,7 +236,6 @@ struct CheckoutView: View {
                             .foregroundStyle(Color.primaryText)
                     }
                 }
-                //                    .padding()
                 
                 
                 Divider()
