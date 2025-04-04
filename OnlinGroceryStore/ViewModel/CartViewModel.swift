@@ -31,7 +31,7 @@ class CartViewModel: ObservableObject
     
     @Published var deliveryType: Int = 1
     @Published var paymentType: Int = 1
-    @Published var deliveryObj: DeliveryAddressModel?
+    @Published var deliveryObj: AddressModel?
     @Published var paymentObj: PaymentModel?
     @Published var promoCodeObj: PromoCodeModel?
     
@@ -163,7 +163,7 @@ class CartViewModel: ObservableObject
                     
                     self.deliveryObj = nil
                     self.paymentObj = nil
-                    self.promoCodeObj = nil
+//                    self.promoCodeObj = nil
                     self.showCheckout = false
                     
                     self.errorMessage = response.value(forKey: ResponseKeys.message) as? String ?? "Success"

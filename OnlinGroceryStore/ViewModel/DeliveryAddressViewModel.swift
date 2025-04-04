@@ -169,7 +169,7 @@ class DeliveryAddressViewModel: ObservableObject
     @Published var showError = false
     @Published var errorMessage = ""
     
-    @Published var listArr: [DeliveryAddressModel] = []
+    @Published var listArr: [AddressModel] = []
     
     
     init() {
@@ -186,7 +186,7 @@ class DeliveryAddressViewModel: ObservableObject
         txtTypeName = "Home"
     }
     
-    func setData(aObj: DeliveryAddressModel) {
+    func setData(aObj: AddressModel) {
         txtName = aObj.name
         txtMobile = aObj.phone
         txtAddress = aObj.address
@@ -207,7 +207,7 @@ class DeliveryAddressViewModel: ObservableObject
                     
                     
                     self.listArr = (response.value(forKey: ResponseKeys.payload) as? NSArray ?? []).map({ obj in
-                        return DeliveryAddressModel(dict: obj as? NSDictionary ?? [:])
+                        return AddressModel(dict: obj as? NSDictionary ?? [:])
                     })
                 
                 }else{
@@ -221,7 +221,7 @@ class DeliveryAddressViewModel: ObservableObject
         }
     }
     
-    func serviceCallRemove(aObj: DeliveryAddressModel){
+    func serviceCallRemove(aObj: AddressModel){
         ServiceCall.post(parameter: ["address_id": aObj.id ], path: Globs.Endpoints.removeAddress, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {
@@ -239,7 +239,7 @@ class DeliveryAddressViewModel: ObservableObject
         }
     }
     
-    func serviceCallUpdateAddress( aObj: DeliveryAddressModel?, didDone: (( )->())? ) {
+    func serviceCallUpdateAddress( aObj: AddressModel?, didDone: (( )->())? ) {
         ServiceCall.post(parameter: ["address_id":  aObj?.id ?? "", "name":  txtName, "type_name": txtTypeName, "phone": txtMobile, "address": txtAddress, "city": txtCity, "state": txtState, "postal_code": txtPostalCode ], path: Globs.Endpoints.updateAddress, isToken: true ) { responseObj in
             if let response = responseObj as? NSDictionary {
                 if response.value(forKey: ResponseKeys.status) as? String ?? "" == "1" {

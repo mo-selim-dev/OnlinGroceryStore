@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct DeliveryAddressModel: Identifiable, Equatable {
+struct AddressModel: Identifiable, Equatable {
     
     var id: Int = 0
     var name: String = ""
@@ -35,7 +35,7 @@ struct DeliveryAddressModel: Identifiable, Equatable {
        
     }
     
-    static func == (lhs: DeliveryAddressModel, rhs: DeliveryAddressModel) -> Bool {
+    static func == (lhs: AddressModel, rhs: AddressModel) -> Bool {
         return lhs.id == rhs.id
     }
 }
